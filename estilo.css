@@ -1,0 +1,670 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+:root {
+    --color-principal: #1f1f1f;
+    --color-secundario: #1c1c1c;
+    --color-botones: #f5f5f5;
+    --color-hover: #E91E63;
+}
+
+body {
+    background-color: var(--color-principal);
+    font-family: 'Roboto';
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-botones);
+    transition: all 0.2s linear;
+}
+
+header {
+    z-index: 10;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    min-height: 60px;
+    background-color: var(--color-principal);
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
+}
+
+.headeroculto {
+    z-index: 1;
+    position: relative;
+    opacity: 0;
+}
+
+.linksheader {
+    font-size: 18px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    width: 240px;
+}
+
+.logo img {
+    height: 60px;
+    margin-right: 10px;
+    width: 100%;
+}
+
+nav a {
+    font-weight: 600;
+    margin-right: 40px;
+    transition: all 0.2s linear;
+}
+
+a:hover {
+    color: var(--color-hover);
+    transition: 0.2s ease-in;
+}
+
+
+/*cuerpo*/
+
+.cuerpo {
+    display: flex;
+    background-color: var(--color-secundario);
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    color: var(--color-botones);
+}
+
+.opciones {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+    grid-auto-rows: minmax(100px, auto);
+    width: 100%;
+    height: 100%;
+}
+
+.card {
+    background-color: var(--color-principal);
+    width: 100%;
+    height: auto;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 0px 5px 5px 5px;
+    transition: 0.2s ease-in;
+}
+
+.card h2 {
+    color: var(--color-botones);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    transition: all 0.2s linear;
+}
+
+.card i {
+    font-size: 50px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    transition: all 0.2s linear;
+}
+
+.card i:hover {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+}
+
+
+/*auncio*/
+
+.banner {
+    background-color: var(--color-secundario);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    justify-items: center;
+    padding-top: 0px;
+    padding-bottom: 3%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.imagenbanner {
+    max-width: 95%;
+    height: auto;
+    min-width: 90%;
+}
+
+
+/*tablas*/
+
+.tablas {
+    display: flex;
+    background-color: var(--color-secundario);
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding-top: 1%;
+    padding-bottom: 3%;
+    color: var(--color-botones);
+}
+
+.top10 {
+    background-color: var(--color-principal);
+    width: 60%;
+    height: auto;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
+    margin-left: 5%;
+    margin-right: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 0px 5px 5px 5px;
+    transition: 0.2s ease-in;
+}
+
+.headertop {
+    display: flex;
+    justify-content: space-between;
+}
+
+.headertop h3 {
+    margin-left: 5px;
+}
+
+.headertop h4 {
+    margin-left: 5px;
+}
+
+.headertop a {
+    margin-right: 5px;
+}
+
+.tablita {
+    margin-top: 10px;
+    background-color: var(--color-secundario);
+}
+
+.jugador {
+    width: 100%;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.rango {
+    display: flex;
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+.rango img {
+    padding-left: 40px;
+}
+
+.rango span {
+    align-self: center;
+}
+
+.rango h5 {
+    align-self: center;
+    padding-left: 1%;
+}
+
+.bordes {
+    border-bottom: solid var(--color-hover);
+    border-width: thin;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.ultimoscambios {
+    background-color: var(--color-principal);
+    width: 50%;
+    height: auto;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-right: 5%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 0px 5px 5px 5px;
+    transition: 0.2s ease-in;
+}
+
+.footercambios {
+    margin-top: 15px;
+    float: right;
+}
+
+.footercambios a {
+    width: 100%;
+    height: 100%;
+}
+
+.tablitacambios {
+    margin-top: 10px;
+    background-color: var(--color-secundario);
+}
+
+.equipo {
+    width: 100%;
+    padding-bottom: 15px;
+}
+
+.infoequipos {
+    display: block;
+    align-items: center;
+    padding-top: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-bottom: 15px;
+}
+
+.infoequipos h3 {
+    margin-bottom: 15px;
+}
+
+.infoCambio {
+    display: flex;
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+.infoCambio h4 {
+    color: #2cff02;
+}
+
+
+/*piedepagina*/
+
+.pie {
+    z-index: 10;
+    position: relative;
+    box-shadow: 0px -2px 2px rgb(0 0 0 / 15%);
+    width: 100%;
+    background-color: var(--color-principal);
+}
+
+.pie .grupo-2 {
+    background-color: var(--color-principal);
+    padding: 15px 10px;
+    text-align: center;
+    color: var(--color-botones);
+}
+
+.pie .grupo-2 small {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.pie .grupo-2 small b {
+    color: var(--color-hover);
+}
+
+
+/*pagina de equipos-------------------------------------------------------------------------------------*/
+
+.cuerpoequipo {
+    display: flex;
+    background-color: var(--color-secundario);
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    color: var(--color-botones);
+}
+
+.equipoinformacion {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.cuerpoequiposecundario {
+    display: flex;
+    background-color: var(--color-secundario);
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    color: var(--color-botones);
+}
+
+.infoequipoindividual {
+    margin-left: 5%;
+    margin-right: 3%;
+    width: 500px;
+    height: auto;
+    background-color: var(--color-principal);
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 0px 5px 5px 5px;
+    transition: 0.2s ease-in;
+}
+
+.tarjetaequipo {
+    width: 100%;
+    height: 100%;
+}
+
+.tarjetaequipo h2 {
+    color: var(--color-botones);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    transition: all 0.2s linear;
+}
+
+.informaciongeneralequipo {
+    margin-top: 5px;
+}
+
+.informaciongeneralequipo img {
+    max-width: 7rem;
+    max-height: 7rem;
+    height: auto;
+}
+
+.compitiendoen {
+    background-color: var(--color-secundario);
+    margin-top: 10%;
+    height: auto;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.informacionjugadores {
+    margin-right: 1%;
+    padding-bottom: 1%;
+    width: 60%;
+    height: auto;
+    background-color: var(--color-principal);
+    background-color: var(--color-principal);
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 0px 5px 5px 5px;
+    transition: 0.2s ease-in;
+}
+
+.staffdelequipo {
+    margin-right: 5%;
+    padding-bottom: 1%;
+    width: 40%;
+    height: auto;
+    background-color: var(--color-principal);
+    background-color: var(--color-principal);
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 0px 5px 5px 5px;
+    transition: 0.2s ease-in;
+}
+
+.infojugadorenequipo {
+    align-items: center;
+    padding-top: 10px;
+    margin-left: 15px;
+    margin-right: 5%;
+    padding-bottom: 5px;
+}
+
+.jugadorprimero {
+    display: flex;
+    align-items: center;
+}
+
+.jugadorsegundo h4 {
+    width: 100%;
+    font-weight: 500;
+}
+
+.infojugadorenequipo h3 {
+    margin-left: 15%;
+    align-items: center;
+    display: flex;
+}
+
+.rangoequipo {
+    display: flex;
+    margin-left: auto;
+    margin-right: 5%;
+}
+
+.rangoequipo img {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.rangoequipo span {
+    align-self: center;
+}
+
+.jugadoresanteriores {
+    margin-right: 5%;
+    margin-left: 5%;
+    padding-bottom: 1%;
+    width: 60%;
+    height: auto;
+    background-color: var(--color-principal);
+    background-color: var(--color-principal);
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 0px 5px 5px 5px;
+    transition: 0.2s ease-in;
+}
+
+.resultados {
+    margin-right: 5%;
+    padding-bottom: 1%;
+    width: 60%;
+    height: auto;
+    background-color: var(--color-principal);
+    background-color: var(--color-principal);
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 0px 5px 5px 5px;
+    transition: 0.2s ease-in;
+}
+
+.antiguosmiembros {
+    background-color: var(--color-principal);
+    width: 60%;
+    height: auto;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
+    margin-left: 5%;
+    margin-right: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 0px 5px 5px 5px;
+    transition: 0.2s ease-in;
+}
+
+.resultadosequipo {
+    width: 100%;
+    height: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 0px 5px 5px 5px;
+    transition: 0.2s ease-in;
+}
+
+.multiopggheader {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2%;
+}
+
+.multiopggheader h3 {
+    border-left: solid var(--color-hover) 4px;
+    padding-left: 5px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+.opgglogo {
+    padding-right: 5px;
+    margin-right: 15px;
+    margin-top: 7px;
+    max-width: 3rem;
+    max-height: 1rem;
+}
+
+
+/*ajustes globales-------------------------------------------------------------------------------------*/
+
+@media (max-width:700px) {
+    header {
+        opacity: 0;
+        flex-direction: column;
+    }
+    .headeroculto {
+        opacity: 1;
+    }
+    nav {
+        padding: 10px 0px;
+    }
+    .tablas {
+        display: block;
+    }
+    .top10 {
+        width: auto;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .ultimoscambios {
+        width: auto;
+        margin-top: 2%;
+        margin-left: 5%;
+    }
+    .ultimoscambios {
+        margin-top: 15px;
+        height: 200px;
+        float: none;
+    }
+    .rango {
+        padding-left: 5%;
+    }
+    .rango img {
+        padding-left: 10%;
+    }
+    .rango h5 {
+        padding-left: 10%;
+    }
+    .cuerpoequipo {
+        display: block;
+    }
+    .infoequipoindividual {
+        width: 90%;
+        height: auto;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+    .compitiendoen {
+        margin-top: 10%;
+        padding-top: 0;
+        padding-bottom: 10%;
+        background: none;
+    }
+    .compitiendoen h2 {
+        margin-bottom: 5%;
+        background-color: var(--color-secundario);
+    }
+    .informacionjugadores {
+        margin-top: 5%;
+        width: 90%;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+    .staffdelequipo {
+        margin-top: 5%;
+        width: 90%;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+    .cuerpoequiposecundario {
+        display: block;
+    }
+    .antiguosmiembros {
+        margin-top: 1%;
+        width: 90%;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+    .resultados {
+        margin-top: 5%;
+        width: 90%;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+}
+
+
+/*scrollbar*/
+
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: var(--color-principal);
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-botones);
+    border-radius: 8px;
+}
+
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-hover);
+}
