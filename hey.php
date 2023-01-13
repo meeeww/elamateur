@@ -8,6 +8,7 @@
     <title>Inicio</title>
     <link rel="stylesheet" href="estilo.css">
     <script src="https://kit.fontawesome.com/38818051b5.js" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
 </head>
 
 <body>
@@ -79,9 +80,17 @@
                 <h3>Top 10 Jugadores</h3>
                 <a class="laddercompleta" href="#">Ladder Completa</a>
             </div>
-            <div class="tablita">
+            <div class="tablita" id="tablitajugadores">
+                <?php
+                include_once "db.php";
+$myslqi = include_once "db.php";
+$resultado = $mysqli->query("SELECT * FROM jugadores");
+$jugadores = $resultado->fetch_all(MYSQLI_ASSOC);
+echo "Hola";
+                ?>
                 <div class="jugador">
                     <div class="info">
+
                         <h2>Agurin</h2>
                         <div class="rango">
                             <a href="#"><img src="https://lolpros.gg/_nuxt/img/jungle.720b9bb.svg" style="height: 2rem"></a>
