@@ -88,42 +88,46 @@ include_once("db.php");
             </div>
             <div class="tablita" id="tablitajugadores">
                 <?php
-                $result = mysqli_query($conn, "SELECT * FROM `jugadores`");
+                $result = mysqli_query($conn, "SELECT * FROM historialRangos 
+                ORDER BY fecha DESC, FIELD(division,'CHALLENGER','GRANDMASTER','MASTER','DIAMOND') ASC, FIELD(rango,'I', 'II', 'III', 'IV') ASC, lps DESC
+                LIMIT 10;");
+
                 $resultCheck = mysqli_num_rows($result);
 
                 $hoy = getdate();
-                echo $hoy['mday'];
                 $fechadehoy = $hoy['year'] . '-' . sprintf("%02d", $hoy['mon']) . '-' . sprintf("%02d", $hoy['mday']);
 
                 if ($resultCheck > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="jugador">';
                         echo '<div class="info">';
-                        echo '<h2>' . $row['nombreJugador'] . '</h2>';
-                        echo '<div class="rango">';
 
 
-                        $conseguirrangos = mysqli_query($conn, "SELECT * FROM `historialRangos` WHERE `idJugador` = ".$row["idJugador"]. " ORDER BY fecha DESC");
+
+                        $conseguirrangos = mysqli_query($conn, "SELECT * FROM `elamateur`.`jugadores` WHERE `idJugador` = " . $row["idJugador"]);
                         $rangosCheck = mysqli_num_rows($result);
                         if ($rangosCheck > 0) {
                             while ($columna = mysqli_fetch_assoc($conseguirrangos)) {
                                 //echo $columna['fecha'] . ' + ' . $fechadehoy;
-                                if($columna['fecha'] >= (sprintf("%02d", $fechadehoy))){
-                                    echo '<a href="#"><img src="https://lolpros.gg/_nuxt/img/'.$row["posicion"].'.720b9bb.svg" style="height: 2rem"></a>';
-                                    echo '<img src="https://lolpros.gg/_nuxt/img/'.$columna["division"].'.b806d6c.png" style="height: 2rem">';
-                                    echo '<span>' . $columna['rango'] . '</span>';
+                                if ($row['fecha'] >= (sprintf("%02d", $fechadehoy))) {
+                                    echo '<h2>' . $columna['nombreJugador'] . '</h2>';
+                                    echo '<div class="rango">';
+                                    echo '<a href="#"><img src="https://lolpros.gg/_nuxt/img/' . $columna["posicion"] . '.720b9bb.svg" style="height: 2rem"></a>';
+                                    echo '<img src="https://lolpros.gg/_nuxt/img/' . $row["division"] . '.b806d6c.png" style="height: 2rem">';
+                                    echo '<span>' . $row['rango'] . '</span>';
                                     echo '<br>';
-                                    echo '<span>' . $columna['lps'] . '</span>';
+                                    echo '<span>' . $row['lps'] . '</span>';
+                                    echo '<a href="#"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($columna['nombreEquipo']) . '" style="height: 2rem"></a>';
                                     break;
                                 }
                             }
                         }
 
 
+
+
+
                         
-                        
-                        
-                        echo '<a href="#"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/no-need-orga" style="height: 2rem"></a>';
                         echo '</div>';
                         echo '</div>';
                         echo '<div class="bordes">';
