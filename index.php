@@ -111,9 +111,11 @@ include_once("db.php");
                                     echo '<div class="rango">';
                                     echo '<a href="#"><img src="https://lolpros.gg/_nuxt/img/' . strtolower($columna["posicion"]) . '.720b9bb.svg" style="height: 2rem"></a>';
                                     echo '<img src="https://lolpros.gg/_nuxt/img/' . strtolower($row["division"]) . '.b806d6c.png" style="height: 2rem">';
-                                    echo '<span>' . $row['rango'] . '</span>';
+                                    if($row['division'] != "CHALLENGER" && $row['division'] != "GRANDMASTER" && $row['division'] != "MASTER"){
+                                        echo '<span>' . $row['rango'] . '</span>';
+                                    }
                                     echo '<br>';
-                                    echo '<span>' . $row['lps'] . '</span>';
+                                    echo '<span>&nbsp&nbsp' . $row['lps'] . ' LPS</span>';
                                     echo '<a href="#"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($columna['nombreEquipo']) . '" style="height: 2rem"></a>';
                                     break;
                                 }
@@ -145,11 +147,11 @@ include_once("db.php");
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="equipo">';
                         echo '<div class="infoequipos">';
-                        echo '<h3>'.$row['nombreJugador'].'</h3>';
+                        echo '<a class="nombrePlayer" href="/elamateur/jugador?id='.$row['idJugador'].'">'.$row['nombreJugador'].'</a>';
                         echo '<div class="infoCambio">';
-                        echo '<span>'.$row['nombreEquipoAnterior'].'</span>';
+                        echo '<a href="/elamateur/equipo?id='.$row['idEquipo'].'">'.$row['nombreEquipoAnterior'].'</a>';
                         echo '<h4>&nbsp&nbsp→&nbsp&nbsp</h4>';
-                        echo '<span>'.$row['nombreEquipoNuevo'].'</span>';
+                        echo '<a href="/elamateur/equipo?id='.$row['idEquipoAnterior'].'">'.$row['nombreEquipoNuevo'].'</a>';
                         echo '</div>';
                         echo '</div>';
                         echo '<div class="bordes">';
