@@ -84,11 +84,11 @@ include_once("db.php");
         <div class="top10">
             <div class="headertop">
                 <h3>Top 10 Jugadores</h3>
-                <a class="laddercompleta" href="#">Ladder Completa</a>
+                <a class="laddercompleta" href="/elamateur/ladder">Ladder Completa</a>
             </div>
             <div class="tablita" id="tablitajugadores">
                 <?php
-                $result = mysqli_query($conn, "SELECT * FROM historialRangos 
+                $result = mysqli_query($conn, "SELECT * FROM historialRangos
                 ORDER BY fecha DESC, FIELD(division,'CHALLENGER','GRANDMASTER','MASTER','DIAMOND') ASC, FIELD(rango,'I', 'II', 'III', 'IV') ASC, lps DESC
                 LIMIT 10;");
 
@@ -101,33 +101,26 @@ include_once("db.php");
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="jugador">';
                         echo '<div class="info">';
-
-
-
                         $conseguirrangos = mysqli_query($conn, "SELECT * FROM `elamateur`.`jugadores` WHERE `idJugador` = " . $row["idJugador"]);
-                        $rangosCheck = mysqli_num_rows($result);
+                        $rangosCheck = mysqli_num_rows($conseguirrangos);
                         if ($rangosCheck > 0) {
                             while ($columna = mysqli_fetch_assoc($conseguirrangos)) {
                                 //echo $columna['fecha'] . ' + ' . $fechadehoy;
                                 if ($row['fecha'] >= (sprintf("%02d", $fechadehoy))) {
-                                    echo '<h2>' . $columna['nombreJugador'] . '</h2>';
+                                    echo '<a href="/elamateur/jugador?id='.$row['idJugador'].'"><h2>' . $columna['nombreJugador'] . '</h2></a>';
                                     echo '<div class="rango">';
-                                    echo '<a href="#"><img src="https://lolpros.gg/_nuxt/img/' . $columna["posicion"] . '.720b9bb.svg" style="height: 2rem"></a>';
-                                    echo '<img src="https://lolpros.gg/_nuxt/img/' . $row["division"] . '.b806d6c.png" style="height: 2rem">';
-                                    echo '<span>' . $row['rango'] . '</span>';
+                                    echo '<a href="#"><img src="https://lolpros.gg/_nuxt/img/' . strtolower($columna["posicion"]) . '.720b9bb.svg" style="height: 2rem"></a>';
+                                    echo '<img src="https://lolpros.gg/_nuxt/img/' . strtolower($row["division"]) . '.b806d6c.png" style="height: 2rem">';
+                                    if($row['division'] != "CHALLENGER" && $row['division'] != "GRANDMASTER" && $row['division'] != "MASTER"){
+                                        echo '<span>' . $row['rango'] . '</span>';
+                                    }
                                     echo '<br>';
-                                    echo '<span>' . $row['lps'] . '</span>';
-                                    echo '<a href="#"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($columna['nombreEquipo']) . '" style="height: 2rem"></a>';
+                                    echo '<span>&nbsp&nbsp' . $row['lps'] . ' LPS</span>';
+                                    echo '<a href="/elamateur/equipo?id='.$columna['idEquipo'].'"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($columna['nombreEquipo']) . '" style="height: 2rem"></a>';
                                     break;
                                 }
                             }
                         }
-
-
-
-
-
-                        
                         echo '</div>';
                         echo '</div>';
                         echo '<div class="bordes">';
@@ -143,100 +136,34 @@ include_once("db.php");
                 <h4>Últimos Cambios de Equipos</h4>
             </div>
             <div class="tablitacambios">
-                <div class="equipo">
-                    <div class="infoequipos">
-                        <h3>Nombre Equipo</h3>
-                        <div class="infoCambio">
-                            <span>Nombre Jugador</span>
-                            <h4>&nbsp&nbsp→</h4>
-                        </div>
+                <?php
+                $result = mysqli_query($conn, "SELECT * FROM ultimosCambios
+                ORDER BY fecha DESC
+                LIMIT 7;");
 
-                    </div>
-                    <div class="bordes">
+                $resultCheck = mysqli_num_rows($result);
 
-                    </div>
-                </div>
-                <div class="equipo">
-                    <div class="infoequipos">
-                        <h3>Nombre Equipo</h3>
-                        <div class="infoCambio">
-                            <span>Nombre Jugador</span>
-                            <h4>&nbsp&nbsp→</h4>
-                        </div>
+                if ($resultCheck > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="equipo">';
+                        echo '<div class="infoequipos">';
+                        echo '<a class="nombrePlayer" href="/elamateur/jugador?id='.$row['idJugador'].'">'.$row['nombreJugador'].'</a>';
+                        echo '<div class="infoCambio">';
+                        echo '<a href="/elamateur/equipo?id='.$row['idEquipo'].'">'.$row['nombreEquipoAnterior'].'</a>';
+                        echo '<h4>&nbsp&nbsp→&nbsp&nbsp</h4>';
+                        echo '<a href="/elamateur/equipo?id='.$row['idEquipoAnterior'].'">'.$row['nombreEquipoNuevo'].'</a>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '<div class="bordes">';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                }
 
-                    </div>
-                    <div class="bordes">
-
-                    </div>
-                </div>
-                <div class="equipo">
-                    <div class="infoequipos">
-                        <h3>Nombre Equipo</h3>
-                        <div class="infoCambio">
-                            <span>Nombre Jugador</span>
-                            <h4>&nbsp&nbsp→</h4>
-                        </div>
-
-                    </div>
-                    <div class="bordes">
-
-                    </div>
-                </div>
-                <div class="equipo">
-                    <div class="infoequipos">
-                        <h3>Nombre Equipo</h3>
-                        <div class="infoCambio">
-                            <span>Nombre Jugador</span>
-                            <h4>&nbsp&nbsp→</h4>
-                        </div>
-
-                    </div>
-                    <div class="bordes">
-
-                    </div>
-                </div>
-                <div class="equipo">
-                    <div class="infoequipos">
-                        <h3>Nombre Equipo</h3>
-                        <div class="infoCambio">
-                            <span>Nombre Jugador</span>
-                            <h4>&nbsp&nbsp→</h4>
-                        </div>
-
-                    </div>
-                    <div class="bordes">
-
-                    </div>
-                </div>
-                <div class="equipo">
-                    <div class="infoequipos">
-                        <h3>Nombre Equipo</h3>
-                        <div class="infoCambio">
-                            <span>Nombre Jugador</span>
-                            <h4>&nbsp&nbsp→</h4>
-                        </div>
-
-                    </div>
-                    <div class="bordes">
-
-                    </div>
-                </div>
-                <div class="equipo">
-                    <div class="infoequipos">
-                        <h3>Nombre Equipo</h3>
-                        <div class="infoCambio">
-                            <span>Nombre Jugador</span>
-                            <h4>&nbsp&nbsp→</h4>
-                        </div>
-
-                    </div>
-                    <div class="bordes">
-
-                    </div>
-                </div>
+                ?>
             </div>
             <div class="footercambios">
-                <a class="laddercompleta" href="#">Ver Todos Los Cambios</a>
+                <a class="laddercompleta" href="/elamateur/cambios">Ver Todos Los Cambios</a>
             </div>
 
         </div>
