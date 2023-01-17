@@ -84,7 +84,7 @@ include_once("db.php");
         <div class="top10">
             <div class="headertop">
                 <h3>Top 10 Jugadores</h3>
-                <a class="laddercompleta" href="#">Ladder Completa</a>
+                <a class="laddercompleta" href="/elamateur/ladder">Ladder Completa</a>
             </div>
             <div class="tablita" id="tablitajugadores">
                 <?php
@@ -102,12 +102,12 @@ include_once("db.php");
                         echo '<div class="jugador">';
                         echo '<div class="info">';
                         $conseguirrangos = mysqli_query($conn, "SELECT * FROM `elamateur`.`jugadores` WHERE `idJugador` = " . $row["idJugador"]);
-                        $rangosCheck = mysqli_num_rows($result);
+                        $rangosCheck = mysqli_num_rows($conseguirrangos);
                         if ($rangosCheck > 0) {
                             while ($columna = mysqli_fetch_assoc($conseguirrangos)) {
                                 //echo $columna['fecha'] . ' + ' . $fechadehoy;
                                 if ($row['fecha'] >= (sprintf("%02d", $fechadehoy))) {
-                                    echo '<h2>' . $columna['nombreJugador'] . '</h2>';
+                                    echo '<a href="/elamateur/jugador?id='.$row['idJugador'].'"><h2>' . $columna['nombreJugador'] . '</h2></a>';
                                     echo '<div class="rango">';
                                     echo '<a href="#"><img src="https://lolpros.gg/_nuxt/img/' . strtolower($columna["posicion"]) . '.720b9bb.svg" style="height: 2rem"></a>';
                                     echo '<img src="https://lolpros.gg/_nuxt/img/' . strtolower($row["division"]) . '.b806d6c.png" style="height: 2rem">';
@@ -116,7 +116,7 @@ include_once("db.php");
                                     }
                                     echo '<br>';
                                     echo '<span>&nbsp&nbsp' . $row['lps'] . ' LPS</span>';
-                                    echo '<a href="#"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($columna['nombreEquipo']) . '" style="height: 2rem"></a>';
+                                    echo '<a href="/elamateur/equipo?id='.$columna['idEquipo'].'"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($columna['nombreEquipo']) . '" style="height: 2rem"></a>';
                                     break;
                                 }
                             }
@@ -163,7 +163,7 @@ include_once("db.php");
                 ?>
             </div>
             <div class="footercambios">
-                <a class="laddercompleta" href="#">Ver Todos Los Cambios</a>
+                <a class="laddercompleta" href="/elamateur/cambios">Ver Todos Los Cambios</a>
             </div>
 
         </div>

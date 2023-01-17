@@ -80,7 +80,7 @@ if (!$comprobar) {
                 <?php
                 echo '<img src="https://res.cloudinary.com/chypriote/image/upload/t_medium/f_auto/v1634227483/teams/no-need-orga">';
 
-                echo '<h2>'.$nombreEquipoPagina.'</h2>';
+                echo '<h2>' . $nombreEquipoPagina . '</h2>';
                 echo '<h4>Redes</h4>';
                 ?>
             </div>
@@ -101,7 +101,7 @@ if (!$comprobar) {
                     while ($rowOPGG = mysqli_fetch_assoc($resultOPGG)) {
                         $vuelta = $vuelta + 1;
                         //array_push($a, $rowOPGG['nombreJugador']);//hay que hacer bien el link
-                        if($resultCheckOPGG == $vuelta){
+                        if ($resultCheckOPGG == $vuelta) {
                             $jugadoresJuntos = $jugadoresJuntos . $rowOPGG['nombreJugador'];
                         } else {
                             $jugadoresJuntos = $jugadoresJuntos . $rowOPGG['nombreJugador'] . ',';
@@ -109,7 +109,7 @@ if (!$comprobar) {
                     }
                 }
 
-                $opgglink = 'https://euw.op.gg/multi/query='.preg_replace("/\s+/", "%20",$jugadoresJuntos);
+                $opgglink = 'https://euw.op.gg/multi/query=' . preg_replace("/\s+/", "%20", $jugadoresJuntos);
                 echo '<a href=' . $opgglink . '><img src="https://lolpros.gg/_nuxt/img/opgg-long.8f2c257.png" class="opgglogo"></a>';
                 ?>
 
@@ -117,7 +117,6 @@ if (!$comprobar) {
             <?php
             $result2 = mysqli_query($conn, "SELECT * FROM `jugadores` WHERE nombreEquipo = '" . $nombreEquipoPagina . "';");
             $resultCheck2 = mysqli_num_rows($result2);
-            $a = array();
             //conseguir jugadores
             if ($resultCheck2 > 0) {
                 while ($row2 = mysqli_fetch_assoc($result2)) {
@@ -125,7 +124,7 @@ if (!$comprobar) {
                     echo '<div class="infojugadorenequipo">';
                     echo '<div class="jugadorprimero">';
                     echo '<a href="#"><img src="https://lolpros.gg/_nuxt/img/' . $row2["posicion"] . '.844c0d4.svg" style="height: 2rem"></a>';
-                    echo '<h3>' . $row2['nombreJugador'] . '</h3>';
+                    echo '<a href="/elamateur/jugador?id='.$row2['idJugador'].'"><h3>' . $row2['nombreJugador'] . '</h3></a>';
                     echo '</div>';
                     echo '<div class="jugadorsegundo">';
                     echo '<h4>' . $row2['fecha'] . '</h4>';
@@ -145,7 +144,7 @@ if (!$comprobar) {
                         while ($row3 = mysqli_fetch_assoc($result3)) {
                             if ($row3['fecha'] >= (sprintf("%02d", $fechadehoy))) {
                                 echo '<img src="https://lolpros.gg/_nuxt/img/' . strtolower($row3['division']) . '.b806d6c.png" style="height: 2rem">';
-                                echo '<h3>' . $row3['lps'] . ' LPS</h3>';
+                                echo '<h3>&nbsp&nbsp' . $row3['lps'] . ' LPS</h3>';
                             }
                         }
                     }
@@ -169,42 +168,32 @@ if (!$comprobar) {
             <div class="multiopggheader">
                 <h3>Staff</h3>
             </div>
-            <div class="equipoinformacion">
 
-                <div class="infojugadorenequipo">
-                    <div class="jugadorprimero">
-                        <a href="#"><img src="https://lolpros.gg/_nuxt/img/top.844c0d4.svg" style="height: 2rem"></a>
-                        <h3>Agurin</h3>
-                    </div>
+            <?php
+            $resultStaff = mysqli_query($conn, "SELECT * FROM `staff` WHERE nombreEquipo = '" . $nombreEquipoPagina . "';");
+            $resultCheckStaff = mysqli_num_rows($resultStaff);
+            //conseguir jugadores
+            if ($resultCheckStaff > 0) {
+                while ($rowStaff = mysqli_fetch_assoc($resultStaff)) {
+                    echo '<div class="equipoinformacion">';
+                    echo '<div class="infojugadorenequipo">';
+                    echo '<div class="jugadorprimero">';
+                    echo '<a href="#"><img src="https://lolpros.gg/_nuxt/img/' . $rowStaff['rol'] . '.844c0d4.svg" style="height: 2rem"></a>';
+                    echo '<a href="/elamateur/staff?id='.$rowStaff['idStaff'].'"><h3>' . $rowStaff['nombreStaff'] . '</h3></a>';
+                    echo '</div>';
+                    echo '<div class="jugadorsegundo">';
+                    echo '<h4>' . $rowStaff['fecha'] . '</h4>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="bordes">';
+                    echo '</div>';
+                }
+            }
 
-                    <div class="jugadorsegundo">
-                        <h4>Enero 2023</h4>
-                    </div>
 
-                </div>
+            ?>
 
-
-            </div>
-            <div class="bordes">
-
-            </div>
-            <div class="equipoinformacion">
-                <div class="infojugadorenequipo">
-                    <div class="jugadorprimero">
-                        <a href="#"><img src="https://lolpros.gg/_nuxt/img/top.844c0d4.svg" style="height: 2rem"></a>
-                        <h3>Agurin</h3>
-                    </div>
-
-                    <div class="jugadorsegundo">
-                        <h4>Enero 2023</h4>
-                    </div>
-
-                </div>
-
-            </div>
-            <div class="bordes">
-
-            </div>
         </div>
     </div>
 
@@ -213,22 +202,47 @@ if (!$comprobar) {
             <div class="headertop">
                 <h3>Antiguos miembros</h3>
             </div>
-            <div class="tablita">
-                <div class="jugador">
-                    <div class="info">
-                        <h2>Agurin</h2>
-                        <div class="rango">
-                            <a href="#"><img src="https://lolpros.gg/_nuxt/img/jungle.720b9bb.svg" style="height: 2rem"></a>
-                            <img src="https://lolpros.gg/_nuxt/img/challenger.b806d6c.png" style="height: 2rem">
-                            <span>15 LPS</span>
-                            <a href="#"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/no-need-orga" style="height: 2rem"></a>
-                        </div>
+            <div class="tablitaEquipo">
+                <?php
+                $resultAntiguosMiembros = mysqli_query($conn, "SELECT * FROM `ultimosCambios` WHERE idEquipoAnterior = '" . $idEquipoPagina . "' ORDER BY `fecha` ASC;");
+                $resultCheckAntiguosMiembros = mysqli_num_rows($resultAntiguosMiembros);
+                //conseguir jugadores
+                if ($resultCheckAntiguosMiembros > 0) {
+                    while ($rowAntiguosMiembros = mysqli_fetch_assoc($resultAntiguosMiembros)) {
+                        echo '<div class="jugador">';
+                        echo '<div class="info">';
+                        echo '<a href="/elamateur/jugador?id='.$rowAntiguosMiembros['idJugador'].'"><h2>' . $rowAntiguosMiembros['nombreJugador'] . '</h2></a>';
+                        echo '<div class="rango">';
 
-                    </div>
-                    <div class="bordes">
 
-                    </div>
-                </div>
+                        $result3 = mysqli_query($conn, "SELECT * FROM historialRangos WHERE idJugador = '" . $rowAntiguosMiembros['idJugador'] . "';");
+
+                        $resultCheck3 = mysqli_num_rows($result3);
+
+                        if ($resultCheck3 > 0) {
+                            while ($row3 = mysqli_fetch_assoc($result3)) {
+                                if ($row3['fecha'] >= (sprintf("%02d", $fechadehoy))) {
+                                    //<a href="#"><img src="https://lolpros.gg/_nuxt/img/jungle.720b9bb.svg" style="height: 2rem"></a>
+                                    echo '<img src="https://lolpros.gg/_nuxt/img/' . strtolower($row3["division"]) . '.b806d6c.png" style="height: 2rem">';
+                                    if($row3['division'] != "CHALLENGER" && $row3['division'] != "GRANDMASTER" && $row3['division'] != "MASTER"){
+                                        echo '<span>' . $row3['rango'] . '</span>';
+                                    }
+                                    echo '<br>';
+                                    echo '<span>&nbsp&nbsp' . $row3['lps'] . ' LPS</span>';
+                                    echo '<a href="/elamateur/equipo?id='.$rowAntiguosMiembros['idEquipo'].'"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($rowAntiguosMiembros['nombreEquipoNuevo']) . '" style="height: 2rem"></a>';
+                                    echo '</div>';
+                                    echo '</div>';
+                                    echo '<div class="bordes">';
+                                    echo '</div>';
+                                    echo '</div>';
+                                }
+                            }
+                        }
+                    }
+                }
+
+                ?>
+
             </div>
         </div>
 
@@ -237,46 +251,31 @@ if (!$comprobar) {
                 <div class="headertop">
                     <h3>Resultados del Equipo</h3>
                 </div>
-                <div class="tablita">
-                    <div class="jugador">
-                        <div class="info">
-                            <h3>5-8</h3>
-                            <div class="rango">
-                                <h5>Nombre de Torneo Numero de Split</h5><br>
-                                <h5>01/02/2023</h5>
-                            </div>
+                <div class="tablitaEquipo">
+                    <?php
+                    $resultResultados = mysqli_query($conn, "SELECT * FROM `resultadosEquipos` WHERE idEquipo = '" . $idEquipoPagina . "' ORDER BY `fecha` ASC;");
+                    $resultCheckResultados = mysqli_num_rows($resultResultados);
+                    //conseguir jugadores
+                    if ($resultCheckResultados > 0) {
+                        while ($rowResultados = mysqli_fetch_assoc($resultResultados)) {
+                            echo '<div class="jugador">';
+                            echo '<div class="infoResultados">';
+                            echo '<h3>'.$rowResultados['posicion'].'</h3>';
+                            echo '<div class="resultadosEquipoTabla">';
+                            echo '<a href="/elamateur/liga?nombre='.strtolower($rowResultados['liga']).'"><h4>'.$rowResultados['liga'].'</h4></a><br>';
+                            echo '<h5>'.$rowResultados['fecha'].'</h5>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '<div class="bordes">';
+                            echo '</div>';
+                            echo '</div>';
+                        }
+                    }
 
-                        </div>
-                        <div class="bordes">
 
-                        </div>
-                    </div>
-                    <div class="jugador">
-                        <div class="info">
-                            <h3>5-8</h3>
-                            <div class="rango">
-                                <h5>Nombre de Torneo Numero de Split</h5><br>
-                                <h5>01/02/2023</h5>
-                            </div>
+                    ?>
 
-                        </div>
-                        <div class="bordes">
 
-                        </div>
-                    </div>
-                    <div class="jugador">
-                        <div class="info">
-                            <h3>5-8</h3>
-                            <div class="rango">
-                                <h5>Nombre de Torneo Numero de Split</h5><br>
-                                <h5>01/02/2023</h5>
-                            </div>
-
-                        </div>
-                        <div class="bordes">
-
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

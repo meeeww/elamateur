@@ -1,6 +1,6 @@
 <?php
 
-include_once("db.php");
+/*include_once("db.php");
 
 $idEquipoPagina = $_GET['id'];
 
@@ -27,7 +27,7 @@ if ($resultCheck > 0) {
 if (!$comprobar) {
     header('Location: http://localhost/elamateur/');
     die();
-}
+}*/
 
 ?>
 
