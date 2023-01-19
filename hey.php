@@ -58,7 +58,7 @@ include_once("db.php");
             <div class="tablaLadder">
 
                 <?php
-                $result = mysqli_query($conn, "SELECT * FROM historialRangos
+                $result = mysqli_query($conn, "SELECT DISTINCT * FROM historialRangos
             ORDER BY fecha DESC, FIELD(division,'CHALLENGER','GRANDMASTER','MASTER','DIAMOND') ASC, FIELD(rango,'I', 'II', 'III', 'IV') ASC, lps DESC;");
 
                 $resultCheck = mysqli_num_rows($result);
@@ -73,11 +73,9 @@ include_once("db.php");
                         $conseguirrangos = mysqli_query($conn, "SELECT * FROM `elamateur`.`jugadores` WHERE `idJugador` = " . $row["idJugador"]);
                         $rangosCheck = mysqli_num_rows($conseguirrangos);
 
-                        
                         if ($rangosCheck > 0) {
                             while ($columna = mysqli_fetch_assoc($conseguirrangos)) {
                                 //echo $columna['fecha'] . ' + ' . $fechadehoy;
-                                
                                 if ($row['fecha'] >= (sprintf("%02d", $fechadehoy))) {
                                     echo '<h2 style="padding-right: 2vh">'.$contador.'º</h2>';
                                     echo '<a href="/elamateur/jugador?id=' . $row['idJugador'] . '"><h2>' . $columna['nombreJugador'] . '</h2></a>';
