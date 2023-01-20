@@ -1,10 +1,10 @@
 <?php
 
-/*include_once("db.php");
+include_once("db.php");
 
-$idEquipoPagina = $_GET['id'];
+$idJugadorPagina = $_GET['id'];
 
-$result = mysqli_query($conn, "SELECT * FROM `equipos`;");
+$result = mysqli_query($conn, "SELECT * FROM `jugadores`;");
 
 $resultCheck = mysqli_num_rows($result);
 
@@ -12,11 +12,9 @@ $comprobar = false;
 
 if ($resultCheck > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-        if ($row['idEquipo'] == $idEquipoPagina) {
+        if ($row['idJugador'] == $idJugadorPagina) {
             $comprobar = true;
-            $nombreEquipoPagina = $row['nombreEquipo'];
-            $logoEquipoGrande = $row['logoGrande'];
-            $logoEquipoPequeño = $row['logoPequeño'];
+            $nombreJugadorPagina = $row['nombreEquipo'];
             //
 
             ///
@@ -27,7 +25,7 @@ if ($resultCheck > 0) {
 if (!$comprobar) {
     header('Location: http://localhost/elamateur/');
     die();
-}*/
+}
 
 ?>
 
@@ -38,7 +36,7 @@ if (!$comprobar) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Jugador</title>
     <link rel="stylesheet" href="estilo.css">
     <script src="https://kit.fontawesome.com/38818051b5.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
@@ -80,7 +78,7 @@ if (!$comprobar) {
                 <?php
                 echo '<img src="https://res.cloudinary.com/chypriote/image/upload/t_medium/f_auto/v1634227483/teams/no-need-orga">';
 
-                echo '<h2>'.$nombreEquipoPagina.'</h2>';
+                echo '<h2>'.$nombreJugadorPagina.'</h2>';
                 echo '<h4>Redes</h4>';
                 ?>
             </div>
