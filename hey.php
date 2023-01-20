@@ -66,40 +66,49 @@ include_once("db.php");
                 $hoy = getdate();
                 $fechadehoy = $hoy['year'] . '-' . sprintf("%02d", $hoy['mon']) . '-' . sprintf("%02d", $hoy['mday']);
                 $contador = 1;
+                $jugadoresCheck = array();
                 if ($resultCheck > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<div class="jugadorLadder">';
-                        echo '<div class="infoLadder">';
-                        $conseguirrangos = mysqli_query($conn, "SELECT * FROM `elamateur`.`jugadores` WHERE `idJugador` = " . $row["idJugador"]);
+
+                        $conseguirrangos = mysqli_query($conn, "SELECT * FROM `elamateur`.`jugadores` WHERE `idJugador` = '" . $row["idJugador"] . "'");
                         $rangosCheck = mysqli_num_rows($conseguirrangos);
 
-                        
+
                         if ($rangosCheck > 0) {
                             while ($columna = mysqli_fetch_assoc($conseguirrangos)) {
-                                //echo $columna['fecha'] . ' + ' . $fechadehoy;
-                                
-                                if ($row['fecha'] >= (sprintf("%02d", $fechadehoy))) {
-                                    echo '<h2 style="padding-right: 2vh">'.$contador.'º</h2>';
-                                    echo '<a href="/elamateur/jugador?id=' . $row['idJugador'] . '"><h2>' . $columna['nombreJugador'] . '</h2></a>';
-                                    $contador = $contador + $rangosCheck;
-                                    echo '<div class="rango">';
-                                    echo '<a href="#"><img src="https://lolpros.gg/_nuxt/img/' . strtolower($columna["posicion"]) . '.720b9bb.svg" style="height: 2rem"></a>';
-                                    echo '<img src="https://lolpros.gg/_nuxt/img/' . strtolower($row["division"]) . '.b806d6c.png" style="height: 2rem">';
-                                    if ($row['division'] != "CHALLENGER" && $row['division'] != "GRANDMASTER" && $row['division'] != "MASTER") {
-                                        echo '<span>' . $row['rango'] . '</span>';
+
+
+                                if (in_array($columna["idJugador"], $jugadoresCheck)) {
+                                } else {
+                                    array_push($jugadoresCheck, $columna["idJugador"]);
+                                    echo '<div class="jugadorLadder">';
+                                    echo '<div class="infoLadder">';
+                                    if ($row['fecha'] >= (sprintf("%02d", $fechadehoy))) {
+                                        echo '<h2 style="padding-right: 2vh">' . $contador . 'º</h2>';
+                                        echo '<a href="/elamateur/jugador?id=' . $row['idJugador'] . '"><h2>' . $columna['nombreJugador'] . '</h2></a>';
+                                        $contador = $contador + $rangosCheck;
+                                        echo '<div class="rango">';
+                                        echo '<a href="#"><img src="https://lolpros.gg/_nuxt/img/' . strtolower($columna["posicion"]) . '.720b9bb.svg" style="height: 2rem"></a>';
+                                        echo '<img src="https://lolpros.gg/_nuxt/img/' . strtolower($row["division"]) . '.b806d6c.png" style="height: 2rem">';
+                                        if ($row['division'] != "CHALLENGER" && $row['division'] != "GRANDMASTER" && $row['division'] != "MASTER") {
+                                            echo '<span>' . $row['rango'] . '</span>';
+                                        }
+                                        echo '<br>';
+                                        echo '<span>&nbsp&nbsp' . $row['lps'] . ' LPS</span>';
+                                        echo '<a href="/elamateur/equipo?id=' . $columna['idEquipo'] . '"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($columna['nombreEquipo']) . '" style="height: 2rem"></a>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                        echo '<div class="bordes">';
+                                        echo '</div>';
+                                        echo '</div>';
+                                        break;
                                     }
-                                    echo '<br>';
-                                    echo '<span>&nbsp&nbsp' . $row['lps'] . ' LPS</span>';
-                                    echo '<a href="/elamateur/equipo?id=' . $columna['idEquipo'] . '"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($columna['nombreEquipo']) . '" style="height: 2rem"></a>';
-                                    break;
                                 }
+                                //echo $columna['fecha'] . ' + ' . $fechadehoy;
+
+
                             }
                         }
-                        echo '</div>';
-                        echo '</div>';
-                        echo '<div class="bordes">';
-                        echo '</div>';
-                        echo '</div>';
                     }
                 }
 
