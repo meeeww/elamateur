@@ -115,7 +115,6 @@ include_once("db.php");
                                             
                                             array_push($jugadoresCheck, $columna["idJugador"]);
                                             $limite = $limite + 1;
-                                            echo $jugadoresCheck[0];
                                             echo '<div class="jugador">';
                                             echo '<div class="info">';
                                             echo '<a href="/elamateur/jugador?id=' . $row['idJugador'] . '"><h2>' . $columna['nombreJugador'] . '</h2></a>';
@@ -153,7 +152,7 @@ include_once("db.php");
                 <?php
                 $result = mysqli_query($conn, "SELECT * FROM ultimosCambios
                 ORDER BY fecha DESC
-                LIMIT 9;");
+                LIMIT 8;");
 
                 $resultCheck = mysqli_num_rows($result);
 
