@@ -1,0 +1,1 @@
+SELECT JSON_ARRAYAGG(JSON_OBJECT('idJugador', idJugador, 'nombreJugador', nombreJugador)) from jugadores;
