@@ -15,6 +15,15 @@ include_once("db.php");
     <link rel="stylesheet" href="estilo.css">
     <script src="https://kit.fontawesome.com/38818051b5.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script>/*
+        var r = document.querySelector(':root');
+        console.log("hola")
+        $(document).ready(function() {
+            console.log("hola")
+            r.style.setProperty('--color-secundario', 'white');
+        })*/
+    </script>
 </head>
 
 <body>
@@ -190,7 +199,7 @@ include_once("db.php");
             <a href="#"><i class="fa-brands fa-discord"></i></a>
             <a href="#"><i class="fa-brands fa-twitter"></i></a>
             <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            
+
         </div>
     </footer>
 </body>
