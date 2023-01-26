@@ -82,8 +82,8 @@ include "db.php";
         </div>
     </header>
     <div class="graficoChart">
-        <h3>Hola</h3>
-        <div class="curve_chart" id="curve_chart" style="width:900px; height:500px"></div>
+        
+        <div class="curve_chart" id="curve_chart" style="width:900px; height:500px"><h3>Hola</h3></div>
     </div>
 </body>
 
