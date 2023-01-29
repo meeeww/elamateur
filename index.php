@@ -15,6 +15,15 @@ include_once("db.php");
     <link rel="stylesheet" href="estilo.css">
     <script src="https://kit.fontawesome.com/38818051b5.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script>/*
+        var r = document.querySelector(':root');
+        console.log("hola")
+        $(document).ready(function() {
+            console.log("hola")
+            r.style.setProperty('--color-secundario', 'white');
+        })*/
+    </script>
 </head>
 
 <body>
@@ -91,7 +100,7 @@ include_once("db.php");
                 $result = mysqli_query($conn, "SELECT * FROM historialRangos
                 ORDER BY fecha DESC, FIELD(division,'CHALLENGER','GRANDMASTER','MASTER','DIAMOND') ASC, FIELD(rango,'I', 'II', 'III', 'IV') ASC, lps DESC
                 ;");
-                
+
                 $resultCheck = mysqli_num_rows($result);
 
                 $hoy = getdate();
@@ -109,10 +118,10 @@ include_once("db.php");
                             while ($columna = mysqli_fetch_assoc($conseguirrangos)) {
                                 //echo $columna['fecha'] . ' + ' . $fechadehoy;
                                 if ($row['fecha'] >= (sprintf("%02d", $fechadehoy))) {
-                                    if($limite <= 9){
+                                    if ($limite <= 9) {
                                         if (in_array($columna["idJugador"], $jugadoresCheck)) {
                                         } else {
-                                            
+
                                             array_push($jugadoresCheck, $columna["idJugador"]);
                                             $limite = $limite + 1;
                                             echo '<div class="jugador">';
@@ -135,7 +144,6 @@ include_once("db.php");
                                             break;
                                         }
                                     }
-                                    
                                 }
                             }
                         }
@@ -188,7 +196,10 @@ include_once("db.php");
 
     <footer class="pie">
         <div class="grupo-2">
-            <small>&copy; 2023<b> Lee Sin</b> - Derechos Reservados</small>
+            <a href="#"><i class="fa-brands fa-discord"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+
         </div>
     </footer>
 </body>

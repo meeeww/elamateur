@@ -359,10 +359,14 @@ a:hover {
 }
 
 .pie .grupo-2 {
+    display: flex;
+    align-items: center;
+    justify-content: end;
     background-color: var(--color-principal);
     padding: 15px 10px;
     text-align: center;
     color: var(--color-botones);
+    margin-right: 5px;
 }
 
 .pie .grupo-2 small {
@@ -372,6 +376,29 @@ a:hover {
 
 .pie .grupo-2 small b {
     color: var(--color-hover);
+}
+
+.pie .grupo-2 a {
+    margin-right: 10px;
+}
+
+
+/*pagina de jugadores-------------------------------------------------------------------------------------*/
+
+.graficoChart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.graficoChart h3 {
+    padding-top: 50px;
+    color: var(--color-cuarto-paleta);
+}
+
+.curve_chart {
+    background-color: var(--color-principal);
 }
 
 
