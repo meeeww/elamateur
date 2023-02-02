@@ -72,12 +72,12 @@ include_once("db.php");
                 }
                 ?>
                 <form method="post">
-                    <button type="submit" name="todos" value="Todos"><img src="https://lolpros.gg/_nuxt/img/jungle.720b9bb.svg" alt="Todos" height="32px" width="32px"></button>
-                    <button type="submit" name="top" value="Top"><img src="https://lolpros.gg/_nuxt/img/jungle.720b9bb.svg" alt="Top" height="32px" width="32px"></button>
-                    <button type="submit" name="jungla" value="Jungla"><img src="https://lolpros.gg/_nuxt/img/jungle.720b9bb.svg" alt="Jungla" height="32px" width="32px"></button>
-                    <button type="submit" name="mid" value="Mid"><img src="https://lolpros.gg/_nuxt/img/jungle.720b9bb.svg" alt="Jungla" height="32px" width="32px"></button>
-                    <button type="submit" name="adc" value="ADC"><img src="https://lolpros.gg/_nuxt/img/jungle.720b9bb.svg" alt="ADC" height="32px" width="32px"></button>
-                    <button type="submit" name="support" value="Support"><img src="https://lolpros.gg/_nuxt/img/jungle.720b9bb.svg" alt="Support" height="32px" width="32px"></button>
+                    <!-- <button type="submit" name="todos" value="Todos"><img src="src/adc.png" alt="Todos" height="32px" width="32px"></button> -->
+                    <button type="submit" name="top" value="Top"><img src="src/top.png" alt="Top" height="32px" width="32px"></button>
+                    <button type="submit" name="jungla" value="Jungla"><img src="src/jng.png" alt="Jungla" height="32px" width="32px"></button>
+                    <button type="submit" name="mid" value="Mid"><img src="src/mid.png" alt="Jungla" height="32px" width="32px"></button>
+                    <button type="submit" name="adc" value="ADC"><img src="src/adc.png" alt="ADC" height="32px" width="32px"></button>
+                    <button type="submit" name="support" value="Support"><img src="src/sup.png" alt="Support" height="32px" width="32px"></button>
                 </form>
             </div>
         </div>
@@ -92,8 +92,7 @@ include_once("db.php");
             <div class="tablaLadder">
 
                 <?php
-                $result = mysqli_query($conn, "SELECT * FROM historialRangos
-            ORDER BY fecha DESC, FIELD(division,'CHALLENGER','GRANDMASTER','MASTER','DIAMOND') ASC, FIELD(rango,'I', 'II', 'III', 'IV') ASC, lps DESC;");
+                $result = mysqli_query($conn, "SELECT * FROM `historialRangos` ORDER BY FIELD(division,'CHALLENGER','GRANDMASTER','MASTER','DIAMOND', 'PLATINUM', 'GOLD', 'SILVER', 'BRONZE', 'IRON') ASC, FIELD(rango,'I', 'II', 'III', 'IV') ASC, lps DESC;");
 
                 $resultCheck = mysqli_num_rows($result);
 
@@ -115,21 +114,28 @@ include_once("db.php");
                                     if (in_array($columna["idJugador"], $jugadoresCheck)) {
                                     } else {
                                         array_push($jugadoresCheck, $columna["idJugador"]);
-                                        echo '<div class="jugadorLadder">';
-                                        echo '<div class="infoLadder">';
+                                        
                                         if ($row['fecha'] >= (sprintf("%02d", $fechadehoy))) {
+                                            echo '<div class="jugadorLadder">';
+                                        echo '<div class="infoLadder">';
                                             echo '<h2 style="padding-right: 2vh">' . $contador . 'º</h2>';
                                             echo '<a href="/elamateur/jugador?id=' . $row['idJugador'] . '"><h2>' . $columna['nombreJugador'] . '</h2></a>';
                                             $contador = $contador + $rangosCheck;
                                             echo '<div class="rango">';
-                                            echo '<a href="#"><img src="https://lolpros.gg/_nuxt/img/' . strtolower($columna["posicion"]) . '.720b9bb.svg" style="height: 2rem"></a>';
-                                            echo '<img src="https://lolpros.gg/_nuxt/img/' . strtolower($row["division"]) . '.b806d6c.png" style="height: 2rem">';
+                                            echo '<a href="#"><img src="src/' . strtolower($columna["posicion"]) . '.png" style="height: 2rem"></a>';
+                                            echo '<img src="src/' . strtolower($row["division"]) . '.png" style="height: 2rem; margin-right: 10px">';
                                             if ($row['division'] != "CHALLENGER" && $row['division'] != "GRANDMASTER" && $row['division'] != "MASTER") {
                                                 echo '<span>' . $row['rango'] . '</span>';
                                             }
                                             echo '<br>';
                                             echo '<span>&nbsp&nbsp' . $row['lps'] . ' LPS</span>';
-                                            echo '<a href="/elamateur/equipo?id=' . $columna['idEquipo'] . '"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($columna['nombreEquipo']) . '" style="height: 2rem"></a>';
+                                            $conseguiLogoEquipo = mysqli_query($conn, "SELECT * FROM `elamateur`.`equipos` WHERE `idEquipo` = " . $columna['idEquipo']);
+                                            $logosCheck = mysqli_num_rows($conseguiLogoEquipo);
+                                            if ($logosCheck > 0) {
+                                                while ($columnaLogos = mysqli_fetch_assoc($conseguiLogoEquipo)) {
+                                                    echo '<a href="/elamateur/equipo?id=' . $columna['idEquipo'] . '"><img src="' . $columnaLogos["logoGrande"] . '" style="height: 2rem; width: 72px"></a>';
+                                                }
+                                            }
                                             echo '</div>';
                                             echo '</div>';
                                             echo '<div class="bordes">';

@@ -85,6 +85,9 @@ if (!$comprobar) {
                 ?>
             </div>
             <div class="compitiendoen">
+                <?php
+                
+                ?>
                 <h2>Hola</h2>
             </div>
         </div>

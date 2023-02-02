@@ -658,6 +658,8 @@ a:hover {
     margin-right: 20px;
     padding-top: 15px;
     padding-bottom: 15px;
+    margin-bottom: 15px;
+    margin-top: 15px;
     padding-left: 30px;
     padding-right: 30px;
     border-radius: 0px 5px 5px 5px;
@@ -672,19 +674,20 @@ a:hover {
 }
 
 .jugadorHeaderLadder {
-    margin-left: 20vh;
+    margin-left: auto;
 }
 
 .rolHeaderLadder {
-    margin-left: 40vh;
+    margin-left: auto;
 }
 
 .rangoHeaderLadder {
-    margin-left: 10vh;
+    margin-left: auto;
 }
 
 .equipoHeaderLadder {
-    margin-left: 15vh;
+    margin-left: auto;
+    margin-right: 15px;
 }
 
 .jugadorLadder {
@@ -706,6 +709,7 @@ a:hover {
     background-color: transparent;
     border: transparent;
     cursor: pointer;
+    margin-left: 10px;
 }
 
 
