@@ -16,7 +16,8 @@ include_once("db.php");
     <script src="https://kit.fontawesome.com/38818051b5.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script>/*
+    <script>
+        /*
         var r = document.querySelector(':root');
         console.log("hola")
         $(document).ready(function() {
@@ -98,7 +99,7 @@ include_once("db.php");
             <div class="tablita" id="tablitajugadores">
                 <?php
                 $result = mysqli_query($conn, "SELECT * FROM historialRangos
-                ORDER BY fecha DESC, FIELD(division,'CHALLENGER','GRANDMASTER','MASTER','DIAMOND') ASC, FIELD(rango,'I', 'II', 'III', 'IV') ASC, lps DESC
+                ORDER BY fecha DESC, FIELD(division,'CHALLENGER','GRANDMASTER','MASTER','DIAMOND', 'PLATINUM', 'GOLD', 'SILVER', 'BRONZE', 'IRON') ASC, FIELD(rango,'I', 'II', 'III', 'IV') ASC, lps DESC
                 ;");
 
                 $resultCheck = mysqli_num_rows($result);
@@ -129,13 +130,19 @@ include_once("db.php");
                                             echo '<a href="/elamateur/jugador?id=' . $row['idJugador'] . '"><h2>' . $columna['nombreJugador'] . '</h2></a>';
                                             echo '<div class="rango">';
                                             echo '<a href="#"><img src="https://lolpros.gg/_nuxt/img/' . strtolower($columna["posicion"]) . '.720b9bb.svg" style="height: 2rem"></a>';
-                                            echo '<img src="https://lolpros.gg/_nuxt/img/' . strtolower($row["division"]) . '.b806d6c.png" style="height: 2rem">';
+                                            echo '<img src="src/' . strtolower($row["division"]) . '.png" style="height: 2rem; padding-right: 10px">';
                                             if ($row['division'] != "CHALLENGER" && $row['division'] != "GRANDMASTER" && $row['division'] != "MASTER") {
                                                 echo '<span>' . $row['rango'] . '</span>';
                                             }
                                             echo '<br>';
                                             echo '<span>&nbsp&nbsp' . $row['lps'] . ' LPS</span>';
-                                            echo '<a href="/elamateur/equipo?id=' . $columna['idEquipo'] . '"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($columna['nombreEquipo']) . '" style="height: 2rem"></a>';
+                                            $conseguiLogoEquipo = mysqli_query($conn, "SELECT * FROM `elamateur`.`equipos` WHERE `idEquipo` = " . $columna['idEquipo']);
+                                            $logosCheck = mysqli_num_rows($conseguiLogoEquipo);
+                                            if ($logosCheck > 0) {
+                                                while ($columnaLogos = mysqli_fetch_assoc($conseguiLogoEquipo)) {
+                                                    echo '<a href="/elamateur/equipo?id=' . $columna['idEquipo'] . '"><img src="' . $columnaLogos["logoGrande"] . '" style="height: 2rem; width: 72px"></a>';
+                                                }
+                                            }
                                             echo '</div>';
                                             echo '</div>';
                                             echo '<div class="bordes">';

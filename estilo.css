@@ -531,6 +531,7 @@ a:hover {
     margin-left: 5%;
     width: 170px;
     align-items: center;
+    justify-content: center;
     display: flex;
 }
 
@@ -877,6 +878,7 @@ a:hover {
         height: auto;
         margin-right: 5%;
         margin-left: 5%;
+        min-height: 300px;
     }
     .compitiendoen {
         margin-top: 10%;
