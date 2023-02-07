@@ -353,6 +353,8 @@ a:hover {
 .pie {
     z-index: 10;
     position: relative;
+    bottom: 0;
+    left: 0;
     box-shadow: 0px -2px 2px rgb(0 0 0 / 15%);
     width: 100%;
     background-color: var(--color-principal);
@@ -825,6 +827,173 @@ a:hover {
     margin-top: 1%;
 }
 
+.cuerpoJugadores{
+    margin-block: 20px;
+    display: flex;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.infoJugador{
+    color: white;
+    margin-right: 10px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.infoJugador i{
+    color: grey;
+}
+
+.tarjetaJugador{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+}
+
+.keypoints{
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.keypoints div{
+    display: flex;
+    align-items: center;
+    margin-block: 5px;
+    padding-block: 10px;
+    color: white;
+    background-color: rgb(122, 122, 122);
+}
+
+.ranks{
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    margin-block: 15px;
+    background-color: red;
+}
+
+.ranks div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block: 5px;
+    padding-block: 10px;
+    color: white;
+    background-color: rgb(122, 122, 122);
+}
+
+.cuentas{
+    width: 100%;
+    height: 200px;
+}
+
+.opcionesCuentas ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+.listaCuentas li{
+    display: inline;
+    padding: 0.7rem;
+    margin-left: 20px;
+    border-bottom: 4px solid black;
+}
+
+.nombreCuentas{
+    margin: 15px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.cuenta{
+    width: 200px;
+    height: 40px;
+    background-color: #E2004C;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid grey;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.infoRank{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5rem;
+    position: relative;
+}
+
+.tarjetaInfoRank{
+    margin-block: 1rem;
+    width: 300px;
+}
+
+.tarjetaInfoRank > div{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tarjetaInfoRank > div >h2{
+    color: white;
+    border-left: 4px solid rgb(0, 119, 255);
+    padding-left: 15px;
+}
+
+.tarjetaInfoRank > div >span{
+    color: white;
+    background-color:rgb(0, 119, 255);
+    padding: 3px;
+}
+
+.tarjetaCurrentRank{
+    width: 300px;
+    height: 100px;
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.infoRangoCurrentRank{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.tarjetaInfoRank > ul> div{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #5f5f5f;
+    padding: 0.5rem;
+    margin-block: 5px;
+}
+
+.rankHistory{
+    background-color: #5f5f5f;
+    position: absolute;
+    top: 0;
+    left: 350px;
+    height: 500px;
+    width: 60%;
+}
 
 /*ajustes globales-------------------------------------------------------------------------------------*/
 
@@ -921,6 +1090,27 @@ a:hover {
         margin-right: 5%;
         margin-left: 5%;
     }
+    .infoJugador{
+        margin-left: 0;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2 , 1fr);
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .ranks{
+        margin-top: 0;
+    }
+
+    .nombreCuentas{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cuerpoJugadores{
+        display: block;
+        height: 200vh;
+    }
 }
 
 @media (max-width:1130px) {
@@ -930,6 +1120,23 @@ a:hover {
         justify-content: center;
         padding-left: 0;
         padding-right: 0;
+    }
+    .nombreCuentas{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .rankHistory{
+        top: 500px;
+        left: 0;
+        width: 700px;
+    }
+    .cuerpoJugadores{
+        height: 200vh;
+    }
+}
+
+@media (max-width:500px){
+    .nombreCuentas{
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
