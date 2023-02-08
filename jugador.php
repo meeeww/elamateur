@@ -120,9 +120,9 @@ if ($resultCheck > 0) {
                     }
                 },
                 chartArea: {
-                    left: 100,
-                    top: 60,
-                    width: "60%",
+                    left: 65,
+                    top: 70,
+                    width: "700px",
                     height: "500px"
                 }
             };

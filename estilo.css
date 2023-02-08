@@ -1035,12 +1035,13 @@ a:hover {
 }
 
 .rankHistory{
-    position: absolute;
     top: 0;
+    position: absolute;
     left: 350px;
     height: 500px;
-    width: 60%;
+    width: 700px;
     color: var(--color-botones);
+    background-color: var(--color-principal);
     border-radius: 5px 5px 5px 5px;
     box-shadow: 4px 4px 4px 5px rgb(0 0 0 / 15%);
     padding-top: 10px;
@@ -1180,7 +1181,7 @@ a:hover {
         grid-template-columns: repeat(2, 1fr);
     }
     .rankHistory{
-        top: 500px;
+        top: 350px;
         left: 0;
         width: 700px;
     }
