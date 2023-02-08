@@ -98,13 +98,13 @@ include_once("db.php");
         </div>
     </div>
 
-    <div class="banner">
+    <!--<div class="banner">
         <img class="imagenbanner" src="https://via.placeholder.com/1000x200" alt="Anuncio">
     </div>
 
     <div class="banner">
         <img class="imagenbanner" src="https://via.placeholder.com/1000x200" alt="Anuncio">
-    </div>
+    </div>-->
 
     <footer class="pie">
         <div class="grupo-2">

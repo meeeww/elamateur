@@ -92,11 +92,12 @@ if (!$comprobar) {
                 //conseguir jugadores
                 if ($resultCheckCompitiendoEn > 0) {
                     while ($rowCompitiendoEn = mysqli_fetch_assoc($resultCompitiendoEn)) {
-                        echo '<h2>'.$rowCompitiendoEn["nombreLiga"].'</h2>';
+                        echo '<img src="'.$rowCompitiendoEn["logo"].'" style="height: 3rem;margin-block:20px">';
                     }
                 }
                 
                 ?>
+                
             </div>
         </div>
         <div class="informacionjugadores">
@@ -290,10 +291,10 @@ if (!$comprobar) {
             </div>
         </div>
     </div>
-
+<!--
     <div class="banner">
         <img class="imagenbanner" src="https://via.placeholder.com/1000x200" alt="Anuncio">
-    </div>
+    </div>-->
 
     <footer class="pie">
         <div class="grupo-2">
