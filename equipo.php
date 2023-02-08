@@ -86,9 +86,17 @@ if (!$comprobar) {
             </div>
             <div class="compitiendoen">
                 <?php
+                $resultCompitiendoEn = mysqli_query($conn, "SELECT compitiendoEn.idEquipo, compitiendoEn.idLiga, listaLigas.* FROM compitiendoEn
+                INNER JOIN listaLigas ON compitiendoEn.idLiga = listaLigas.idLiga WHERE compitiendoEn.idEquipo = '" . $idEquipoPagina . "';");
+                $resultCheckCompitiendoEn = mysqli_num_rows($resultCompitiendoEn);
+                //conseguir jugadores
+                if ($resultCheckCompitiendoEn > 0) {
+                    while ($rowCompitiendoEn = mysqli_fetch_assoc($resultCompitiendoEn)) {
+                        echo '<h2>'.$rowCompitiendoEn["nombreLiga"].'</h2>';
+                    }
+                }
                 
                 ?>
-                <h2>Hola</h2>
             </div>
         </div>
         <div class="informacionjugadores">
@@ -113,7 +121,7 @@ if (!$comprobar) {
                 }
 
                 $opgglink = 'https://euw.op.gg/multi/query=' . preg_replace("/\s+/", "%20", $jugadoresJuntos);
-                echo '<a href=' . $opgglink . '><img src="src/opgg.png" class="opgglogo"></a>';
+                echo '<a href=' . $opgglink . '><img src="src/opgg.png" class="opgglogo" target="_blank"></a>';
                 ?>
 
             </div>
@@ -136,7 +144,7 @@ if (!$comprobar) {
                     echo '<div class="rangoequipo">';
                     //
 
-                    $result3 = mysqli_query($conn, "SELECT * FROM historialRangos WHERE idJugador = '" . $row2['idJugador'] . "';");
+                    $result3 = mysqli_query($conn, "SELECT * FROM historialRangos WHERE idJugador = '" . $row2['idJugador'] . "' ORDER BY `historialRangos`.`fecha` DESC LIMIT 1;");
 
                     $resultCheck3 = mysqli_num_rows($result3);
 

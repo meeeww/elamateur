@@ -858,6 +858,14 @@ a:hover {
     padding-top: 10px;
 }
 
+.tarjetaJugador h3{
+    margin-top: 10px;
+}
+
+.redesSocialesJugador{
+    margin-block: 20px;
+}
+
 .keypoints{
     width: 100%;
     padding: 5px;
@@ -903,6 +911,10 @@ a:hover {
 
 .rolJugador h4{
     margin-left: 5px;
+}
+
+.rolJugador img{
+    margin-left: 10px;
 }
 
 .rankGlobal h4{
