@@ -826,6 +826,222 @@ a:hover {
 }
 
 
+/* JUGADORES PAGINA ----------------------------------------------------------------------------------*/
+.cuerpoJugadores{
+    margin-block: 20px;
+    display: flex;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.infoJugador{
+    color: white;
+    margin-right: 10px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.infoJugador i{
+    color: var(--color-botones);
+}
+
+.tarjetaJugador{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-principal);
+    border-radius: 0px 5px 5px 5px;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
+    padding-top: 10px;
+}
+
+.keypoints{
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.keypoints div{
+    display: flex;
+    align-items: center;
+    margin-block: 5px;
+    padding-block: 10px;
+    color: white;
+    background-color: var(--color-secundario);
+    border-radius: 0px 5px 5px 5px;
+}
+
+.ranks{
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    margin-block: 15px;
+    background-color: var(--color-principal);
+    border-radius: 0px 5px 5px 5px;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
+    padding-top: 10px;
+}
+
+.ranks div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block: 5px;
+    padding-block: 10px;
+    color: white;
+    background-color: var(--color-secundario);
+}
+
+.equipoJugador h4{
+    margin-left: 5px;
+}
+
+.rolJugador h4{
+    margin-left: 5px;
+}
+
+.rankGlobal h4{
+    margin-inline: 5px;
+}
+
+.rankRol h4{
+    margin-inline: 5px;
+}
+
+.cuentas{
+    width: 100%;
+    height: 200px;
+}
+
+.opcionesCuentas ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+.listaCuentas li{
+    display: inline;
+    padding: 0.7rem;
+    margin-left: 20px;
+    font-weight: 600;
+    border-radius: 0px 5px 5px 5px;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
+    padding-top: 10px;
+}
+
+.nombreCuentas{
+    margin: 15px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.cuenta{
+    width: 200px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: var(--color-principal);
+    border-radius: 0px 5px 5px 5px;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
+    padding-block: 10px;
+    padding-inline: 15px;
+}
+
+.cuenta div{
+    color: var(--color-botones);
+    align-self: center;
+}
+
+.infoRank{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5rem;
+    position: relative;
+}
+
+.tarjetaInfoRank{
+    margin-block: 1rem;
+    width: 300px;
+    background-color: var(--color-principal);
+    border-radius: 0px 5px 5px 5px;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
+}
+
+.tarjetaInfoRank > div{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tarjetaInfoRank > div >h2{
+    color: white;
+    border-left: 4px solid var(--color-hover);
+    padding-left: 15px;
+}
+
+.tarjetaInfoRank > div >a{
+    background-color: #5383e8;
+    padding: 3px;
+    font-weight: 900;
+}
+
+
+.tarjetaCurrentRank{
+    width: 300px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-botones);
+    font-weight: 700;
+}
+
+.infoRangoCurrentRank{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.tarjetaInfoRank > ul> div{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    margin-block: 5px;
+    color: var(--color-botones);
+    font-weight: 700;
+}
+
+.rankHistory{
+    position: absolute;
+    top: 0;
+    left: 350px;
+    height: 500px;
+    width: 60%;
+    color: var(--color-botones);
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 4px 4px 4px 5px rgb(0 0 0 / 15%);
+    padding-top: 10px;
+}
+
+.rangoCurrentRank{
+    margin-left: 10px;
+}
+
 /*ajustes globales-------------------------------------------------------------------------------------*/
 
 @media (max-width:795px) {
@@ -921,6 +1137,27 @@ a:hover {
         margin-right: 5%;
         margin-left: 5%;
     }
+    .infoJugador{
+        margin-left: 0;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2 , 1fr);
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .ranks{
+        margin-top: 0;
+    }
+
+    .nombreCuentas{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cuerpoJugadores{
+        display: block;
+        height: 200vh;
+    }
 }
 
 @media (max-width:1130px) {
@@ -930,6 +1167,23 @@ a:hover {
         justify-content: center;
         padding-left: 0;
         padding-right: 0;
+    }
+    .nombreCuentas{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .rankHistory{
+        top: 500px;
+        left: 0;
+        width: 700px;
+    }
+    .cuerpoJugadores{
+        height: 200vh;
+    }
+}
+
+@media (max-width:500px){
+    .nombreCuentas{
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
