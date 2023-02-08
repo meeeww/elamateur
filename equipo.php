@@ -78,13 +78,16 @@ if (!$comprobar) {
         <div class="infoequipoindividual">
             <div class="informaciongeneralequipo">
                 <?php
-                echo '<img src="https://res.cloudinary.com/chypriote/image/upload/t_medium/f_auto/v1634227483/teams/no-need-orga">';
+                echo '<img src="'.$logoEquipoGrande.'">';
 
                 echo '<h2>' . $nombreEquipoPagina . '</h2>';
                 echo '<h4>Redes</h4>';
                 ?>
             </div>
             <div class="compitiendoen">
+                <?php
+                
+                ?>
                 <h2>Hola</h2>
             </div>
         </div>
@@ -92,7 +95,7 @@ if (!$comprobar) {
             <div class="multiopggheader">
                 <h3>Miembros</h3>
                 <?php
-                $resultOPGG = mysqli_query($conn, "SELECT * FROM `jugadores` WHERE nombreEquipo = '" . $nombreEquipoPagina . "';");
+                $resultOPGG = mysqli_query($conn, "SELECT * FROM `jugadores` WHERE nombreEquipo = replace('" . $nombreEquipoPagina . "', ' ', '_');");
                 $resultCheckOPGG = mysqli_num_rows($resultOPGG);
                 $jugadoresJuntos = '';
                 $vuelta = 0;
@@ -115,7 +118,7 @@ if (!$comprobar) {
 
             </div>
             <?php
-            $result2 = mysqli_query($conn, "SELECT * FROM `jugadores` WHERE nombreEquipo = '" . $nombreEquipoPagina . "';");
+            $result2 = mysqli_query($conn, "SELECT * FROM `jugadores` WHERE nombreEquipo = replace('" . $nombreEquipoPagina . "', ' ', '_');");
             $resultCheck2 = mysqli_num_rows($result2);
             //conseguir jugadores
             if ($resultCheck2 > 0) {
@@ -123,7 +126,7 @@ if (!$comprobar) {
                     echo '<div class="equipoinformacion">';
                     echo '<div class="infojugadorenequipo">';
                     echo '<div class="jugadorprimero">';
-                    echo '<a href="#"><img src="https://lolpros.gg/_nuxt/img/' . $row2["posicion"] . '.844c0d4.svg" style="height: 2rem"></a>';
+                    echo '<img src="src/' . $row2["posicion"] . '.png" style="height: 2rem; width: 2rem">';
                     echo '<a href="/elamateur/jugador?id='.$row2['idJugador'].'"><h3>' . $row2['nombreJugador'] . '</h3></a>';
                     echo '</div>';
                     echo '<div class="jugadorsegundo">';
@@ -143,7 +146,7 @@ if (!$comprobar) {
                     if ($resultCheck3 > 0) {
                         while ($row3 = mysqli_fetch_assoc($result3)) {
                             if ($row3['fecha'] >= (sprintf("%02d", $fechadehoy))) {
-                                echo '<img src="https://lolpros.gg/_nuxt/img/' . strtolower($row3['division']) . '.b806d6c.png" style="height: 2rem">';
+                                echo '<img src="src/' . strtolower($row3['division']) . '.png" style="height: 2rem">';
                                 echo '<h3>&nbsp&nbsp' . $row3['lps'] . ' LPS</h3>';
                             }
                         }
