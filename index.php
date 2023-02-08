@@ -59,7 +59,7 @@ include_once("db.php");
 
     <div class="cuerpo">
         <div class="opciones">
-            <a class="card" href="#">
+            <a class="card" href="/ladder">
                 <div>
                     <i class="fa-solid fa-bolt"></i>
                     <h2>Ladder</h2>
@@ -86,9 +86,9 @@ include_once("db.php");
         </div>
     </div>
 
-    <div class="banner">
+    <!--<div class="banner">
         <img class="imagenbanner" src="https://via.placeholder.com/1000x200" alt="Anuncio">
-    </div>
+    </div>-->
 
     <div class="tablas">
         <div class="top10">
