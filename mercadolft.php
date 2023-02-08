@@ -24,30 +24,30 @@ include_once("db.php");
 
 <body>
     <header>
-        <a href="#" class="logo">
+        <a href="https://elamateur.es" class="logo">
             <img src="https://via.placeholder.com/150" alt="Logo">
         </a>
         <div class="linksheader">
             <nav>
-                <a href="" class="nav-link">Inicio</a>
-                <a href="" class="nav-link">Ladder</a>
-                <a href="" class="nav-link">Ligas</a>
-                <a href="" class="nav-link">Directos</a>
-                <a href="" class="nav-link">Mercado LFT</a>
+                <a href="https://elamateur.es" class="nav-link">Inicio</a>
+                <a href="/ladder" class="nav-link">Ladder</a>
+                <a href="/ligas" class="nav-link">Ligas</a>
+                <a href="/directos" class="nav-link">Directos</a>
+                <a href="/mercadolft" class="nav-link">Mercado LFT</a>
             </nav>
         </div>
     </header>
     <header class="headeroculto">
-        <a href="#" class="logo">
+        <a href="https://elamateur.es" class="logo">
             <img src="https://via.placeholder.com/150" alt="Logo">
         </a>
         <div class="linksheader">
             <nav>
-                <a href="" class="nav-link">Inicio</a>
-                <a href="" class="nav-link">Ladder</a>
-                <a href="" class="nav-link">Ligas</a>
-                <a href="" class="nav-link">Directos</a>
-                <a href="" class="nav-link">Mercado LFT</a>
+                <a href="https://elamateur.es" class="nav-link">Inicio</a>
+                <a href="/ladder" class="nav-link">Ladder</a>
+                <a href="/ligas" class="nav-link">Ligas</a>
+                <a href="/directos" class="nav-link">Directos</a>
+                <a href="/mercadolft" class="nav-link">Mercado LFT</a>
             </nav>
         </div>
     </header>
@@ -72,7 +72,7 @@ include_once("db.php");
                 }
                 ?>
                 <form method="post">
-                    <button type="submit" name="todos" value="Todos"><img src="https://lolpros.gg/_nuxt/img/jungle.720b9bb.svg" alt="Todos" height="32px" width="32px"></button>
+                    <!--<button type="submit" name="todos" value="Todos"><img src="https://lolpros.gg/_nuxt/img/jungle.720b9bb.svg" alt="Todos" height="32px" width="32px"></button>-->
                     <button type="submit" name="top" value="Top"><img src="https://lolpros.gg/_nuxt/img/jungle.720b9bb.svg" alt="Top" height="32px" width="32px"></button>
                     <button type="submit" name="jungla" value="Jungla"><img src="https://lolpros.gg/_nuxt/img/jungle.720b9bb.svg" alt="Jungla" height="32px" width="32px"></button>
                     <button type="submit" name="mid" value="Mid"><img src="https://lolpros.gg/_nuxt/img/jungle.720b9bb.svg" alt="Jungla" height="32px" width="32px"></button>
@@ -120,17 +120,17 @@ include_once("db.php");
                                         echo '<div class="infoLadder">';
                                         if ($row['fecha'] >= (sprintf("%02d", $fechadehoy))) {
                                             echo '<h2 style="padding-right: 2vh">' . $contador . 'º</h2>';
-                                            echo '<a href="/elamateur/jugador?id=' . $row['idJugador'] . '"><h2>' . $columna['nombreJugador'] . '</h2></a>';
+                                            echo '<a href="/jugador?id=' . $row['idJugador'] . '"><h2>' . $columna['nombreJugador'] . '</h2></a>';
                                             $contador = $contador + $rangosCheck;
                                             echo '<div class="rango">';
-                                            echo '<a href="#"><img src="https://lolpros.gg/_nuxt/img/' . strtolower($columna["posicion"]) . '.720b9bb.svg" style="height: 2rem"></a>';
-                                            echo '<img src="https://lolpros.gg/_nuxt/img/' . strtolower($row["division"]) . '.b806d6c.png" style="height: 2rem">';
+                                            echo '<img src="src/' . strtolower($columna["posicion"]) . '.svg" style="height: 2rem"></a>';
+                                            echo '<img src="src/' . strtolower($row["division"]) . '.png" style="height: 2rem">';
                                             if ($row['division'] != "CHALLENGER" && $row['division'] != "GRANDMASTER" && $row['division'] != "MASTER") {
                                                 echo '<span>' . $row['rango'] . '</span>';
                                             }
                                             echo '<br>';
                                             echo '<span>&nbsp&nbsp' . $row['lps'] . ' LPS</span>';
-                                            echo '<a href="/elamateur/equipo?id=' . $columna['idEquipo'] . '"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($columna['nombreEquipo']) . '" style="height: 2rem"></a>';
+                                            echo '<a href="/equipo?id=' . $columna['idEquipo'] . '"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($columna['nombreEquipo']) . '" style="height: 2rem"></a>';
                                             echo '</div>';
                                             echo '</div>';
                                             echo '<div class="bordes">';
@@ -160,17 +160,17 @@ include_once("db.php");
                                         echo '<div class="infoLadder">';
                                         if ($row['fecha'] >= (sprintf("%02d", $fechadehoy))) {
                                             echo '<h2 style="padding-right: 2vh">' . $contador . 'º</h2>';
-                                            echo '<a href="/elamateur/jugador?id=' . $row['idJugador'] . '"><h2>' . $columna['nombreJugador'] . '</h2></a>';
+                                            echo '<a href="/jugador?id=' . $row['idJugador'] . '"><h2>' . $columna['nombreJugador'] . '</h2></a>';
                                             $contador = $contador + $rangosCheck;
                                             echo '<div class="rango">';
-                                            echo '<a href="#"><img src="https://lolpros.gg/_nuxt/img/' . strtolower($columna["posicion"]) . '.720b9bb.svg" style="height: 2rem"></a>';
-                                            echo '<img src="https://lolpros.gg/_nuxt/img/' . strtolower($row["division"]) . '.b806d6c.png" style="height: 2rem">';
+                                            echo '<a href="#"><img src="src/' . strtolower($columna["posicion"]) . '.png" style="height: 2rem"></a>';
+                                            echo '<img src="src/' . strtolower($row["division"]) . '.png" style="height: 2rem">';
                                             if ($row['division'] != "CHALLENGER" && $row['division'] != "GRANDMASTER" && $row['division'] != "MASTER") {
                                                 echo '<span>' . $row['rango'] . '</span>';
                                             }
                                             echo '<br>';
                                             echo '<span>&nbsp&nbsp' . $row['lps'] . ' LPS</span>';
-                                            echo '<a href="/elamateur/equipo?id=' . $columna['idEquipo'] . '"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($columna['nombreEquipo']) . '" style="height: 2rem"></a>';
+                                            echo '<a href="/equipo?id=' . $columna['idEquipo'] . '"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($columna['nombreEquipo']) . '" style="height: 2rem"></a>';
                                             echo '</div>';
                                             echo '</div>';
                                             echo '<div class="bordes">';
@@ -196,7 +196,10 @@ include_once("db.php");
 
     <footer class="pie">
         <div class="grupo-2">
-            <small>&copy; 2023<b> Lee Sin</b> - Derechos Reservados</small>
+            <!--<a href="#"><i class="fa-brands fa-discord"></i></a>-->
+            <a href="https://twitter.com/miralpe"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://twitter.com/rjzass"><i class="fa-brands fa-twitter"></i></a>
+
         </div>
     </footer>
 </body>

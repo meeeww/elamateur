@@ -29,30 +29,30 @@ include_once("db.php");
 
 <body>
     <header>
-        <a href="#" class="logo">
+        <a href="https://www.elamateur.es" class="logo">
             <img src="https://via.placeholder.com/150" alt="Logo">
         </a>
         <div class="linksheader">
             <nav>
-                <a href="" class="nav-link">Inicio</a>
-                <a href="" class="nav-link">Ladder</a>
-                <a href="" class="nav-link">Ligas</a>
-                <a href="" class="nav-link">Directos</a>
-                <a href="" class="nav-link">Mercado LFT</a>
+                <a href="https://www.elamateur.es" class="nav-link">Inicio</a>
+                <a href="/ladder" class="nav-link">Ladder</a>
+                <a href="/ligas" class="nav-link">Ligas</a>
+                <a href="/directos" class="nav-link">Directos</a>
+                <a href="/mercadolft" class="nav-link">Mercado LFT</a>
             </nav>
         </div>
     </header>
     <header class="headeroculto">
-        <a href="#" class="logo">
+    <a href="https://www.elamateur.es" class="logo">
             <img src="https://via.placeholder.com/150" alt="Logo">
         </a>
         <div class="linksheader">
             <nav>
-                <a href="" class="nav-link">Inicio</a>
-                <a href="" class="nav-link">Ladder</a>
-                <a href="" class="nav-link">Ligas</a>
-                <a href="" class="nav-link">Directos</a>
-                <a href="" class="nav-link">Mercado LFT</a>
+                <a href="https://www.elamateur.es" class="nav-link">Inicio</a>
+                <a href="/ladder" class="nav-link">Ladder</a>
+                <a href="/ligas" class="nav-link">Ligas</a>
+                <a href="/directos" class="nav-link">Directos</a>
+                <a href="/mercadolft" class="nav-link">Mercado LFT</a>
             </nav>
         </div>
     </header>
@@ -65,19 +65,19 @@ include_once("db.php");
                     <h2>Ladder</h2>
                 </div>
             </a>
-            <a class="card" href="#">
+            <a class="card" href="/ligas">
                 <div>
                     <i class="fa-solid fa-trophy"></i>
                     <h2>Ligas</h2>
                 </div>
             </a>
-            <a class="card" href="#">
+            <a class="card" href="/directos">
                 <div>
                     <i class="fa-brands fa-twitch"></i>
                     <h2>Directos</h2>
                 </div>
             </a>
-            <a class="card" href="#">
+            <a class="card" href="/mercadolft">
                 <div>
                     <i class="fa-solid fa-shop"></i>
                     <h2>Mercado LFT</h2>
@@ -94,7 +94,7 @@ include_once("db.php");
         <div class="top10">
             <div class="headertop">
                 <h3>Top 10 Jugadores</h3>
-                <a class="laddercompleta" href="/elamateur/ladder">Ladder Completa</a>
+                <a class="laddercompleta" href="/ladder">Ladder Completa</a>
             </div>
             <div class="tablita" id="tablitajugadores">
                 <?php
@@ -127,9 +127,9 @@ include_once("db.php");
                                             $limite = $limite + 1;
                                             echo '<div class="jugador">';
                                             echo '<div class="info">';
-                                            echo '<a href="/elamateur/jugador?id=' . $row['idJugador'] . '"><h2>' . $columna['nombreJugador'] . '</h2></a>';
+                                            echo '<a href="/jugador?id=' . $row['idJugador'] . '"><h2>' . $columna['nombreJugador'] . '</h2></a>';
                                             echo '<div class="rango">';
-                                            echo '<a href="#"><img src="https://lolpros.gg/_nuxt/img/' . strtolower($columna["posicion"]) . '.720b9bb.svg" style="height: 2rem"></a>';
+                                            echo '<img src="src/' . strtolower($columna["posicion"]) . '.png" style="height: 2rem">';
                                             echo '<img src="src/' . strtolower($row["division"]) . '.png" style="height: 2rem; padding-right: 10px">';
                                             if ($row['division'] != "CHALLENGER" && $row['division'] != "GRANDMASTER" && $row['division'] != "MASTER") {
                                                 echo '<span>' . $row['rango'] . '</span>';
@@ -140,7 +140,7 @@ include_once("db.php");
                                             $logosCheck = mysqli_num_rows($conseguiLogoEquipo);
                                             if ($logosCheck > 0) {
                                                 while ($columnaLogos = mysqli_fetch_assoc($conseguiLogoEquipo)) {
-                                                    echo '<a href="/elamateur/equipo?id=' . $columna['idEquipo'] . '"><img src="' . $columnaLogos["logoGrande"] . '" style="height: 2rem; width: 72px"></a>';
+                                                    echo '<a href="/equipo?id=' . $columna['idEquipo'] . '"><img src="' . $columnaLogos["logoGrande"] . '" style="height: 2rem; width: 72px"></a>';
                                                 }
                                             }
                                             echo '</div>';
@@ -175,11 +175,11 @@ include_once("db.php");
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="equipo">';
                         echo '<div class="infoequipos">';
-                        echo '<a class="nombrePlayer" href="/elamateur/jugador?id=' . $row['idJugador'] . '">' . $row['nombreJugador'] . '</a>';
+                        echo '<a class="nombrePlayer" href="/jugador?id=' . $row['idJugador'] . '">' . $row['nombreJugador'] . '</a>';
                         echo '<div class="infoCambio">';
-                        echo '<a href="/elamateur/equipo?id=' . $row['idEquipo'] . '">' . $row['nombreEquipoAnterior'] . '</a>';
+                        echo '<a href="/equipo?id=' . $row['idEquipo'] . '">' . $row['nombreEquipoAnterior'] . '</a>';
                         echo '<h4>&nbsp&nbsp→&nbsp&nbsp</h4>';
-                        echo '<a href="/elamateur/equipo?id=' . $row['idEquipoAnterior'] . '">' . $row['nombreEquipoNuevo'] . '</a>';
+                        echo '<a href="/equipo?id=' . $row['idEquipoAnterior'] . '">' . $row['nombreEquipoNuevo'] . '</a>';
                         echo '</div>';
                         echo '</div>';
                         echo '<div class="bordes">';
@@ -191,7 +191,7 @@ include_once("db.php");
                 ?>
             </div>
             <div class="footercambios">
-                <a class="laddercompleta" href="/elamateur/cambios">Ver Todos Los Cambios</a>
+                <a class="laddercompleta" href="/cambios">Ver Todos Los Cambios</a>
             </div>
 
         </div>

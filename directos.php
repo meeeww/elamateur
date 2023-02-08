@@ -24,30 +24,30 @@ include_once("db.php");
 
 <body>
     <header>
-        <a href="#" class="logo">
+        <a href="https://elamateur.es" class="logo">
             <img src="https://via.placeholder.com/150" alt="Logo">
         </a>
         <div class="linksheader">
             <nav>
-                <a href="" class="nav-link">Inicio</a>
-                <a href="" class="nav-link">Ladder</a>
-                <a href="" class="nav-link">Ligas</a>
-                <a href="" class="nav-link">Directos</a>
-                <a href="" class="nav-link">Mercado LFT</a>
+                <a href="https://elamateur.es" class="nav-link">Inicio</a>
+                <a href="/ladder" class="nav-link">Ladder</a>
+                <a href="/ligas" class="nav-link">Ligas</a>
+                <a href="/directos" class="nav-link">Directos</a>
+                <a href="/mercadolft" class="nav-link">Mercado LFT</a>
             </nav>
         </div>
     </header>
     <header class="headeroculto">
-        <a href="#" class="logo">
+        <a href="https://elamateur.es" class="logo">
             <img src="https://via.placeholder.com/150" alt="Logo">
         </a>
         <div class="linksheader">
             <nav>
-                <a href="" class="nav-link">Inicio</a>
-                <a href="" class="nav-link">Ladder</a>
-                <a href="" class="nav-link">Ligas</a>
-                <a href="" class="nav-link">Directos</a>
-                <a href="" class="nav-link">Mercado LFT</a>
+                <a href="https://elamateur.es" class="nav-link">Inicio</a>
+                <a href="/ladder" class="nav-link">Ladder</a>
+                <a href="/ligas" class="nav-link">Ligas</a>
+                <a href="/directos" class="nav-link">Directos</a>
+                <a href="/mercadolft" class="nav-link">Mercado LFT</a>
             </nav>
         </div>
     </header>
@@ -196,7 +196,10 @@ include_once("db.php");
 
     <footer class="pie">
         <div class="grupo-2">
-            <small>&copy; 2023<b> Lee Sin</b> - Derechos Reservados</small>
+            <!--<a href="#"><i class="fa-brands fa-discord"></i></a>-->
+            <a href="https://twitter.com/miralpe"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://twitter.com/rjzass"><i class="fa-brands fa-twitter"></i></a>
+
         </div>
     </footer>
 </body>

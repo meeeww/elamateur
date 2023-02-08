@@ -25,7 +25,7 @@ if ($resultCheck > 0) {
     }
 }
 if (!$comprobar) {
-    header('Location: http://localhost/elamateur/');
+    header('Location: https://www.elamateur.es/');
     die();
 }
 
@@ -45,31 +45,31 @@ if (!$comprobar) {
 </head>
 
 <body>
-    <header>
-        <a href="#" class="logo">
+<header>
+        <a href="https://elamateur.es" class="logo">
             <img src="https://via.placeholder.com/150" alt="Logo">
         </a>
         <div class="linksheader">
             <nav>
-                <a href="" class="nav-link">Inicio</a>
-                <a href="" class="nav-link">Ladder</a>
-                <a href="" class="nav-link">Ligas</a>
-                <a href="" class="nav-link">Directos</a>
-                <a href="" class="nav-link">Mercado LFT</a>
+                <a href="https://elamateur.es" class="nav-link">Inicio</a>
+                <a href="/ladder" class="nav-link">Ladder</a>
+                <a href="/ligas" class="nav-link">Ligas</a>
+                <a href="/directos" class="nav-link">Directos</a>
+                <a href="/mercadolft" class="nav-link">Mercado LFT</a>
             </nav>
         </div>
     </header>
     <header class="headeroculto">
-        <a href="#" class="logo">
+    <a href="https://elamateur.es" class="logo">
             <img src="https://via.placeholder.com/150" alt="Logo">
         </a>
         <div class="linksheader">
             <nav>
-                <a href="" class="nav-link">Inicio</a>
-                <a href="" class="nav-link">Ladder</a>
-                <a href="" class="nav-link">Ligas</a>
-                <a href="" class="nav-link">Directos</a>
-                <a href="" class="nav-link">Mercado LFT</a>
+                <a href="https://elamateur.es" class="nav-link">Inicio</a>
+                <a href="/ladder" class="nav-link">Ladder</a>
+                <a href="/ligas" class="nav-link">Ligas</a>
+                <a href="/directos" class="nav-link">Directos</a>
+                <a href="/mercadolft" class="nav-link">Mercado LFT</a>
             </nav>
         </div>
     </header>
@@ -113,7 +113,7 @@ if (!$comprobar) {
                 }
 
                 $opgglink = 'https://euw.op.gg/multi/query=' . preg_replace("/\s+/", "%20", $jugadoresJuntos);
-                echo '<a href=' . $opgglink . '><img src="https://lolpros.gg/_nuxt/img/opgg-long.8f2c257.png" class="opgglogo"></a>';
+                echo '<a href=' . $opgglink . '><img src="src/opgg.png" class="opgglogo"></a>';
                 ?>
 
             </div>
@@ -127,7 +127,7 @@ if (!$comprobar) {
                     echo '<div class="infojugadorenequipo">';
                     echo '<div class="jugadorprimero">';
                     echo '<img src="src/' . $row2["posicion"] . '.png" style="height: 2rem; width: 2rem">';
-                    echo '<a href="/elamateur/jugador?id='.$row2['idJugador'].'"><h3>' . $row2['nombreJugador'] . '</h3></a>';
+                    echo '<a href="/jugador?id='.$row2['idJugador'].'"><h3>' . $row2['nombreJugador'] . '</h3></a>';
                     echo '</div>';
                     echo '<div class="jugadorsegundo">';
                     echo '<h4>' . $row2['fecha'] . '</h4>';
@@ -181,8 +181,8 @@ if (!$comprobar) {
                     echo '<div class="equipoinformacion">';
                     echo '<div class="infojugadorenequipo">';
                     echo '<div class="jugadorprimero">';
-                    echo '<a href="#"><img src="https://lolpros.gg/_nuxt/img/' . $rowStaff['rol'] . '.844c0d4.svg" style="height: 2rem"></a>';
-                    echo '<a href="/elamateur/staff?id='.$rowStaff['idStaff'].'"><h3>' . $rowStaff['nombreStaff'] . '</h3></a>';
+                    echo '<a href="#"><img src="src/' . $rowStaff['rol'] . '.png" style="height: 2rem"></a>';
+                    echo '<a href="/staff?id='.$rowStaff['idStaff'].'"><h3>' . $rowStaff['nombreStaff'] . '</h3></a>';
                     echo '</div>';
                     echo '<div class="jugadorsegundo">';
                     echo '<h4>' . $rowStaff['fecha'] . '</h4>';
@@ -214,7 +214,7 @@ if (!$comprobar) {
                     while ($rowAntiguosMiembros = mysqli_fetch_assoc($resultAntiguosMiembros)) {
                         echo '<div class="jugador">';
                         echo '<div class="info">';
-                        echo '<a href="/elamateur/jugador?id='.$rowAntiguosMiembros['idJugador'].'"><h2>' . $rowAntiguosMiembros['nombreJugador'] . '</h2></a>';
+                        echo '<a href="/jugador?id='.$rowAntiguosMiembros['idJugador'].'"><h2>' . $rowAntiguosMiembros['nombreJugador'] . '</h2></a>';
                         echo '<div class="rango">';
 
 
@@ -225,14 +225,13 @@ if (!$comprobar) {
                         if ($resultCheck3 > 0) {
                             while ($row3 = mysqli_fetch_assoc($result3)) {
                                 if ($row3['fecha'] >= (sprintf("%02d", $fechadehoy))) {
-                                    //<a href="#"><img src="https://lolpros.gg/_nuxt/img/jungle.720b9bb.svg" style="height: 2rem"></a>
-                                    echo '<img src="https://lolpros.gg/_nuxt/img/' . strtolower($row3["division"]) . '.b806d6c.png" style="height: 2rem">';
+                                    echo '<img src="src/' . strtolower($row3["division"]) . '.png" style="height: 2rem">';
                                     if($row3['division'] != "CHALLENGER" && $row3['division'] != "GRANDMASTER" && $row3['division'] != "MASTER"){
                                         echo '<span>' . $row3['rango'] . '</span>';
                                     }
                                     echo '<br>';
                                     echo '<span>&nbsp&nbsp' . $row3['lps'] . ' LPS</span>';
-                                    echo '<a href="/elamateur/equipo?id='.$rowAntiguosMiembros['idEquipo'].'"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($rowAntiguosMiembros['nombreEquipoNuevo']) . '" style="height: 2rem"></a>';
+                                    echo '<a href="/equipo?id='.$rowAntiguosMiembros['idEquipo'].'"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($rowAntiguosMiembros['nombreEquipoNuevo']) . '" style="height: 2rem"></a>';
                                     echo '</div>';
                                     echo '</div>';
                                     echo '<div class="bordes">';
@@ -265,7 +264,7 @@ if (!$comprobar) {
                             echo '<div class="infoResultados">';
                             echo '<h3>'.$rowResultados['posicion'].'</h3>';
                             echo '<div class="resultadosEquipoTabla">';
-                            echo '<a href="/elamateur/liga?nombre='.strtolower($rowResultados['liga']).'"><h4>'.$rowResultados['liga'].'</h4></a><br>';
+                            echo '<a href="/liga?nombre='.strtolower($rowResultados['liga']).'"><h4>'.$rowResultados['liga'].'</h4></a><br>';
                             echo '<h5>'.$rowResultados['fecha'].'</h5>';
                             echo '</div>';
                             echo '</div>';
@@ -290,7 +289,10 @@ if (!$comprobar) {
 
     <footer class="pie">
         <div class="grupo-2">
-            <small>&copy; 2023<b> Lee Sin</b> - Derechos Reservados</small>
+            <!--<a href="#"><i class="fa-brands fa-discord"></i></a>-->
+            <a href="https://twitter.com/miralpe"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://twitter.com/rjzass"><i class="fa-brands fa-twitter"></i></a>
+
         </div>
     </footer>
 </body>
