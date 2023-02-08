@@ -121,7 +121,7 @@ if (!$comprobar) {
                 }
 
                 $opgglink = 'https://euw.op.gg/multi/query=' . preg_replace("/\s+/", "%20", $jugadoresJuntos);
-                echo '<a href=' . $opgglink . '><img src="src/opgg.png" class="opgglogo" target="_blank"></a>';
+                echo '<a href=' . $opgglink . ' target="_blank"><img src="src/opgg.png" class="opgglogo"></a>';
                 ?>
 
             </div>

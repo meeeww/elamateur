@@ -13,6 +13,8 @@ if ($resultCheck > 0) {
             $comprobar = true;
             $nombreJugadorPagina = $row['nombreJugador'];
             $rolJugadorPagina = $row['posicion'];
+            $nombreEquipodeJugador = $row['nombreEquipo'];
+            $idEquipodeJugador = $row['idEquipo'];
             //
 
             ///
@@ -144,7 +146,9 @@ if ($resultCheck > 0) {
                     </div>
                     <div class="equipoJugador">
                         <img src="" alt="">
-                        <h4>PRM2</h4>
+                        <?php
+                        echo '<a href="https://elamateur.es/equipoid?=' . $idEquipodeJugador . '"><h4>' . $nombreEquipodeJugador . '</h4></a>';
+                        ?>
                     </div>
                 </div>
             </div>
@@ -207,7 +211,7 @@ if ($resultCheck > 0) {
                     <div>
                         <h2>Rango Actual</h2>
                         <?php
-                        echo '<a href="https://www.op.gg/summoners/euw/' . $nombreJugadorPagina . '"><span>OP.GG</span></a>';
+                        echo '<a href="https://www.op.gg/summoners/euw/' . $nombreJugadorPagina . '" target="_blank"><span>OP.GG</span></a>';
                         ?>
 
                     </div>
