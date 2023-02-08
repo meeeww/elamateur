@@ -43,7 +43,10 @@ include "db.php";
                 backgroundColor: {
                     fill: 'transparent'
                 },
-                colors: ['#E91E63']
+                colors: ['#E91E63'],
+                hAxis: {
+                    textStyle: {color: '#E91E63'}
+                }
             };
 
             var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));

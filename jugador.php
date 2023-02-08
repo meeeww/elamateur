@@ -78,6 +78,59 @@ if ($resultCheck > 0) {
     <link rel="stylesheet" href="estilo.css">
     <script src="https://kit.fontawesome.com/38818051b5.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Fecha');
+            data.addColumn('number', 'LPS');
+            data.addRows([
+                <?php
+                $rango;
+                $query = "SELECT * FROM historialRangos WHERE idJugador = '" . $idEquipoJugador . "'";
+                $res = mysqli_query($conn, $query);
+                $result = mysqli_num_rows($res);
+                if ($result > 0) {
+                    while ($row = mysqli_fetch_assoc($res)) {
+                        echo "['" . $row["fecha"] . "', " . $row["lps"] . "],";
+                        //$rango = $row["division"] + $row["rango"];
+                        $rango = substr($row["division"], 0);
+                    }
+                }
+                ?>
+            ]);
+
+            var options = {
+                curveType: 'function',
+                legend: {
+                    position: 'none'
+                },
+                backgroundColor: {
+                    fill: 'transparent'
+                },
+                colors: ['#E91E63'],
+                hAxis: {
+                    textStyle: {
+                        color: '#E91E63'
+                    }
+                },
+                chartArea: {
+                    left: 100,
+                    top: 60,
+                    width: "60%",
+                    height: "500px"
+                }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+            chart.draw(data, options);
+        }
+    </script>
 </head>
 
 <body>
@@ -221,6 +274,12 @@ if ($resultCheck > 0) {
                             echo '<span>' . $nombreJugadorPagina . '</span>';
                             ?>
                         </div>
+                        <div class="imagenRango">
+                            <?php
+                            echo '<img src="src/' . strtolower($divisionActual) . '.png" style="height: 5rem">';
+                            ?>
+
+                        </div>
                         <div class="infoRangoCurrentRank">
                             <?php
                             echo '<span>' . ucfirst($divisionActual) . '</span>';
@@ -245,6 +304,12 @@ if ($resultCheck > 0) {
                             echo '<span>' . $nombreJugadorPagina . '</span>';
                             ?>
                         </div>
+                        <div class="imagenRango">
+                            <?php
+                            echo '<img src="src/' . strtolower($divisionMaximo) . '.png" style="height: 5rem">';
+                            ?>
+
+                        </div>
                         <div class="infoRangoCurrentRank">
                             <?php
                             echo '<span>' . ucfirst($divisionMaximo) . '</span>';
@@ -258,22 +323,31 @@ if ($resultCheck > 0) {
                         </div>
                     </div>
                 </div>
-                <!--
-                <div class="tarjetaInfoRank">
-                    <div>
-                        <h2>Nombres de Invocador</h2>
-                    </div>
-                    <ul>
-                        <div><span>Agurin</span><span>09/10/19</span></div>
-                        <div><span>FB Agurin</span><span>30/05/19</span></div>
-                        <div><span>Agurin</span><span>06/08/18</span></div>
-                    </ul>
+                <?php
+                $result = mysqli_query($conn, "SELECT * FROM `historialNombres` WHERE idJugador = '" . $idEquipoJugador . "';");
+                $resultCheck = mysqli_num_rows($result);
+                $comprobar = false;
+                if ($resultCheck > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        if ($row['idJugador'] == $idEquipoJugador) {
+                            echo '<div class="tarjetaInfoRank">';
+                            echo '<div>';
+                            echo '<h2>Nombres de Invocador</h2>';
+                            echo '</div>';
+                            echo '<ul>';
+                            echo '<div>';
+                            echo '<span>'.$row["nombreAnterior"].'</span>';
+                            echo '<span>'.$row["fecha"].'</span>';
+                            echo '</div>';
+                            echo '</ul>';
+                            echo '</div>';
+                        }
+                    }
+                }
+                ?>
 
-                </div>
-                        -->
                 <div class="rankHistory">
                     <div class="curve_chart" id="curve_chart" style="width:900px; height:500px">
-                        <h3>Hola</h3>
                     </div>
                 </div>
             </div>
