@@ -197,15 +197,15 @@ include_once("db.php");
         </div>
     </div>
 
-    <div class="banner">
+    <!--<div class="banner">
         <img class="imagenbanner" src="https://via.placeholder.com/1000x200" alt="Anuncio">
-    </div>
+    </div>-->
 
     <footer class="pie">
         <div class="grupo-2">
-            <a href="#"><i class="fa-brands fa-discord"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <!--<a href="#"><i class="fa-brands fa-discord"></i></a>-->
+            <a href="https://twitter.com/miralpe"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://twitter.com/rjzass"><i class="fa-brands fa-twitter"></i></a>
 
         </div>
     </footer>
