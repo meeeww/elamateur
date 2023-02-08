@@ -11,20 +11,21 @@ include_once("db.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Ligas</title>
+    <link rel="icon" href="src/logopequeño.png">
     <link rel="stylesheet" href="estilo.css">
     <script src="https://kit.fontawesome.com/38818051b5.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
 </head>
 
 <body>
-<header>
-        <a href="https://elamateur.es" class="logo">
-            <img src="https://via.placeholder.com/150" alt="Logo">
+    <header>
+        <a href="https://www.elamateur.es" class="logo">
+            <img src="src/logo.png" alt="Logo">
         </a>
         <div class="linksheader">
             <nav>
-                <a href="https://elamateur.es" class="nav-link">Inicio</a>
+                <a href="https://www.elamateur.es" class="nav-link">Inicio</a>
                 <a href="/ladder" class="nav-link">Ladder</a>
                 <a href="/ligas" class="nav-link">Ligas</a>
                 <a href="/directos" class="nav-link">Directos</a>
@@ -33,12 +34,12 @@ include_once("db.php");
         </div>
     </header>
     <header class="headeroculto">
-    <a href="https://elamateur.es" class="logo">
-            <img src="https://via.placeholder.com/150" alt="Logo">
+        <a href="https://www.elamateur.es" class="logo">
+            <img src="src/logo.png" alt="Logo">
         </a>
         <div class="linksheader">
             <nav>
-                <a href="https://elamateur.es" class="nav-link">Inicio</a>
+                <a href="https://www.elamateur.es" class="nav-link">Inicio</a>
                 <a href="/ladder" class="nav-link">Ladder</a>
                 <a href="/ligas" class="nav-link">Ligas</a>
                 <a href="/directos" class="nav-link">Directos</a>
@@ -58,34 +59,34 @@ include_once("db.php");
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo '<div class="tarjetaLiga">';
                     echo '<div class="parteIzquierda">';
-                    echo '<h3>'.$row['puntuacion'].'/10</h3>';
-                    echo '<img src="'.$row['logo'].'" alt="Avatar">';
-                    echo '<h3>Desde '.$row['fechaYYYY'].'</h3>';
+                    echo '<h3>' . $row['puntuacion'] . '/10</h3>';
+                    echo '<img src="' . $row['logo'] . '" alt="Avatar">';
+                    echo '<h3>Desde ' . $row['fechaYYYY'] . '</h3>';
                     echo '</div>';
                     echo '<div class="parteDerecha">';
                     echo '<div class="nombreLiga">';
-                    echo '<a href="'.$row['web'].'">';
-                    echo '<h2>'.$row['nombreLiga'].'</h2>';
+                    echo '<a href="' . $row['web'] . '">';
+                    echo '<h2>' . $row['nombreLiga'] . '</h2>';
                     echo '</a>';
                     echo '</div>';
                     echo '<div class="descripcionLiga">';
-                    echo '<p>'.$row['descripcion'].'</p>';
+                    echo '<p>' . $row['descripcion'] . '</p>';
                     echo '</div>';
                     echo '<div class="infoLiga">';
                     echo '<div class="divisionesLiga">';
                     echo '<h4>Divisiones</h4>';
                     echo '<i class="fa-solid fa-flag"></i>';
-                    echo '<h4>'.$row['divisiones'].'</h4>';
+                    echo '<h4>' . $row['divisiones'] . '</h4>';
                     echo '</div>';
                     echo '<div class="jornadasLiga">';
                     echo '<h4>Jornadas</h4>';
                     echo '<i class="fa-solid fa-calendar"></i>';
-                    echo '<h4>'.$row['jornadas'].'</h4>';
+                    echo '<h4>' . $row['jornadas'] . '</h4>';
                     echo '</div>';
                     echo '<div class="jugadoresLiga">';
                     echo '<h4>Jugadores</h4>';
                     echo '<i class="fa-solid fa-user"></i>';
-                    echo '<h4>'.$row['jugadores'].'+</h4>';
+                    echo '<h4>' . $row['jugadores'] . '+</h4>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';

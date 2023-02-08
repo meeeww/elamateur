@@ -39,19 +39,20 @@ if (!$comprobar) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Equipo</title>
+    <link rel="icon" href="src/logopequeño.png">
     <link rel="stylesheet" href="estilo.css">
     <script src="https://kit.fontawesome.com/38818051b5.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
 </head>
 
 <body>
-<header>
-        <a href="https://elamateur.es" class="logo">
-            <img src="https://via.placeholder.com/150" alt="Logo">
+    <header>
+        <a href="https://www.elamateur.es" class="logo">
+            <img src="src/logo.png" alt="Logo">
         </a>
         <div class="linksheader">
             <nav>
-                <a href="https://elamateur.es" class="nav-link">Inicio</a>
+                <a href="https://www.elamateur.es" class="nav-link">Inicio</a>
                 <a href="/ladder" class="nav-link">Ladder</a>
                 <a href="/ligas" class="nav-link">Ligas</a>
                 <a href="/directos" class="nav-link">Directos</a>
@@ -60,12 +61,12 @@ if (!$comprobar) {
         </div>
     </header>
     <header class="headeroculto">
-    <a href="https://elamateur.es" class="logo">
-            <img src="https://via.placeholder.com/150" alt="Logo">
+        <a href="https://www.elamateur.es" class="logo">
+            <img src="src/logo.png" alt="Logo">
         </a>
         <div class="linksheader">
             <nav>
-                <a href="https://elamateur.es" class="nav-link">Inicio</a>
+                <a href="https://www.elamateur.es" class="nav-link">Inicio</a>
                 <a href="/ladder" class="nav-link">Ladder</a>
                 <a href="/ligas" class="nav-link">Ligas</a>
                 <a href="/directos" class="nav-link">Directos</a>
@@ -78,7 +79,7 @@ if (!$comprobar) {
         <div class="infoequipoindividual">
             <div class="informaciongeneralequipo">
                 <?php
-                echo '<img src="'.$logoEquipoGrande.'">';
+                echo '<img src="' . $logoEquipoGrande . '">';
 
                 echo '<h2>' . $nombreEquipoPagina . '</h2>';
                 echo '<h4>Redes</h4>';
@@ -92,12 +93,12 @@ if (!$comprobar) {
                 //conseguir jugadores
                 if ($resultCheckCompitiendoEn > 0) {
                     while ($rowCompitiendoEn = mysqli_fetch_assoc($resultCompitiendoEn)) {
-                        echo '<img src="'.$rowCompitiendoEn["logo"].'" style="height: 3rem;margin-block:20px">';
+                        echo '<img src="' . $rowCompitiendoEn["logo"] . '" style="height: 3rem;margin-block:20px">';
                     }
                 }
-                
+
                 ?>
-                
+
             </div>
         </div>
         <div class="informacionjugadores">
@@ -136,7 +137,7 @@ if (!$comprobar) {
                     echo '<div class="infojugadorenequipo">';
                     echo '<div class="jugadorprimero">';
                     echo '<img src="src/' . $row2["posicion"] . '.png" style="height: 2rem; width: 2rem">';
-                    echo '<a href="/jugador?id='.$row2['idJugador'].'"><h3>' . $row2['nombreJugador'] . '</h3></a>';
+                    echo '<a href="/jugador?id=' . $row2['idJugador'] . '"><h3>' . $row2['nombreJugador'] . '</h3></a>';
                     echo '</div>';
                     echo '<div class="jugadorsegundo">';
                     echo '<h4>' . $row2['fecha'] . '</h4>';
@@ -191,7 +192,7 @@ if (!$comprobar) {
                     echo '<div class="infojugadorenequipo">';
                     echo '<div class="jugadorprimero">';
                     echo '<a href="#"><img src="src/' . $rowStaff['rol'] . '.png" style="height: 2rem"></a>';
-                    echo '<a href="/staff?id='.$rowStaff['idStaff'].'"><h3>' . $rowStaff['nombreStaff'] . '</h3></a>';
+                    echo '<a href="/staff?id=' . $rowStaff['idStaff'] . '"><h3>' . $rowStaff['nombreStaff'] . '</h3></a>';
                     echo '</div>';
                     echo '<div class="jugadorsegundo">';
                     echo '<h4>' . $rowStaff['fecha'] . '</h4>';
@@ -223,7 +224,7 @@ if (!$comprobar) {
                     while ($rowAntiguosMiembros = mysqli_fetch_assoc($resultAntiguosMiembros)) {
                         echo '<div class="jugador">';
                         echo '<div class="info">';
-                        echo '<a href="/jugador?id='.$rowAntiguosMiembros['idJugador'].'"><h2>' . $rowAntiguosMiembros['nombreJugador'] . '</h2></a>';
+                        echo '<a href="/jugador?id=' . $rowAntiguosMiembros['idJugador'] . '"><h2>' . $rowAntiguosMiembros['nombreJugador'] . '</h2></a>';
                         echo '<div class="rango">';
 
 
@@ -235,12 +236,12 @@ if (!$comprobar) {
                             while ($row3 = mysqli_fetch_assoc($result3)) {
                                 if ($row3['fecha'] >= (sprintf("%02d", $fechadehoy))) {
                                     echo '<img src="src/' . strtolower($row3["division"]) . '.png" style="height: 2rem">';
-                                    if($row3['division'] != "CHALLENGER" && $row3['division'] != "GRANDMASTER" && $row3['division'] != "MASTER"){
+                                    if ($row3['division'] != "CHALLENGER" && $row3['division'] != "GRANDMASTER" && $row3['division'] != "MASTER") {
                                         echo '<span>' . $row3['rango'] . '</span>';
                                     }
                                     echo '<br>';
                                     echo '<span>&nbsp&nbsp' . $row3['lps'] . ' LPS</span>';
-                                    echo '<a href="/equipo?id='.$rowAntiguosMiembros['idEquipo'].'"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($rowAntiguosMiembros['nombreEquipoNuevo']) . '" style="height: 2rem"></a>';
+                                    echo '<a href="/equipo?id=' . $rowAntiguosMiembros['idEquipo'] . '"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($rowAntiguosMiembros['nombreEquipoNuevo']) . '" style="height: 2rem"></a>';
                                     echo '</div>';
                                     echo '</div>';
                                     echo '<div class="bordes">';
@@ -271,10 +272,10 @@ if (!$comprobar) {
                         while ($rowResultados = mysqli_fetch_assoc($resultResultados)) {
                             echo '<div class="jugador">';
                             echo '<div class="infoResultados">';
-                            echo '<h3>'.$rowResultados['posicion'].'</h3>';
+                            echo '<h3>' . $rowResultados['posicion'] . '</h3>';
                             echo '<div class="resultadosEquipoTabla">';
-                            echo '<a href="/liga?nombre='.strtolower($rowResultados['liga']).'"><h4>'.$rowResultados['liga'].'</h4></a><br>';
-                            echo '<h5>'.$rowResultados['fecha'].'</h5>';
+                            echo '<a href="/liga?nombre=' . strtolower($rowResultados['liga']) . '"><h4>' . $rowResultados['liga'] . '</h4></a><br>';
+                            echo '<h5>' . $rowResultados['fecha'] . '</h5>';
                             echo '</div>';
                             echo '</div>';
                             echo '<div class="bordes">';
@@ -291,7 +292,7 @@ if (!$comprobar) {
             </div>
         </div>
     </div>
-<!--
+    <!--
     <div class="banner">
         <img class="imagenbanner" src="https://via.placeholder.com/1000x200" alt="Anuncio">
     </div>-->

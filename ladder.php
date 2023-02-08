@@ -11,7 +11,8 @@ include_once("db.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Ladder</title>
+    <link rel="icon" href="src/logopequeño.png">
     <link rel="stylesheet" href="estilo.css">
     <script src="https://kit.fontawesome.com/38818051b5.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
@@ -23,13 +24,13 @@ include_once("db.php");
 </head>
 
 <body>
-<header>
-        <a href="https://elamateur.es" class="logo">
-            <img src="https://via.placeholder.com/150" alt="Logo">
+    <header>
+        <a href="https://www.elamateur.es" class="logo">
+            <img src="src/logo.png" alt="Logo">
         </a>
         <div class="linksheader">
             <nav>
-                <a href="https://elamateur.es" class="nav-link">Inicio</a>
+                <a href="https://www.elamateur.es" class="nav-link">Inicio</a>
                 <a href="/ladder" class="nav-link">Ladder</a>
                 <a href="/ligas" class="nav-link">Ligas</a>
                 <a href="/directos" class="nav-link">Directos</a>
@@ -38,12 +39,12 @@ include_once("db.php");
         </div>
     </header>
     <header class="headeroculto">
-    <a href="https://elamateur.es" class="logo">
-            <img src="https://via.placeholder.com/150" alt="Logo">
+        <a href="https://www.elamateur.es" class="logo">
+            <img src="src/logo.png" alt="Logo">
         </a>
         <div class="linksheader">
             <nav>
-                <a href="https://elamateur.es" class="nav-link">Inicio</a>
+                <a href="https://www.elamateur.es" class="nav-link">Inicio</a>
                 <a href="/ladder" class="nav-link">Ladder</a>
                 <a href="/ligas" class="nav-link">Ligas</a>
                 <a href="/directos" class="nav-link">Directos</a>
@@ -114,10 +115,10 @@ include_once("db.php");
                                     if (in_array($columna["idJugador"], $jugadoresCheck)) {
                                     } else {
                                         array_push($jugadoresCheck, $columna["idJugador"]);
-                                        
+
                                         if ($row['fecha'] >= (sprintf("%02d", $fechadehoy))) {
                                             echo '<div class="jugadorLadder">';
-                                        echo '<div class="infoLadder">';
+                                            echo '<div class="infoLadder">';
                                             echo '<h2 style="padding-right: 2vh">' . $contador . 'º</h2>';
                                             echo '<a href="/jugador?id=' . $row['idJugador'] . '"><h2>' . $columna['nombreJugador'] . '</h2></a>';
                                             $contador = $contador + $rangosCheck;

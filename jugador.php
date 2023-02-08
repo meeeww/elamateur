@@ -75,6 +75,7 @@ if ($resultCheck > 0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jugador</title>
+    <link rel="icon" href="src/logopequeño.png">
     <link rel="stylesheet" href="estilo.css">
     <script src="https://kit.fontawesome.com/38818051b5.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
@@ -135,12 +136,12 @@ if ($resultCheck > 0) {
 
 <body>
     <header>
-        <a href="https://elamateur.es" class="logo">
-            <img src="https://via.placeholder.com/150" alt="Logo">
+        <a href="https://www.elamateur.es" class="logo">
+            <img src="src/logo.png" alt="Logo">
         </a>
         <div class="linksheader">
             <nav>
-                <a href="https://elamateur.es" class="nav-link">Inicio</a>
+                <a href="https://www.elamateur.es" class="nav-link">Inicio</a>
                 <a href="/ladder" class="nav-link">Ladder</a>
                 <a href="/ligas" class="nav-link">Ligas</a>
                 <a href="/directos" class="nav-link">Directos</a>
@@ -149,12 +150,12 @@ if ($resultCheck > 0) {
         </div>
     </header>
     <header class="headeroculto">
-        <a href="https://elamateur.es" class="logo">
-            <img src="https://via.placeholder.com/150" alt="Logo">
+        <a href="https://www.elamateur.es" class="logo">
+            <img src="src/logo.png" alt="Logo">
         </a>
         <div class="linksheader">
             <nav>
-                <a href="https://elamateur.es" class="nav-link">Inicio</a>
+                <a href="https://www.elamateur.es" class="nav-link">Inicio</a>
                 <a href="/ladder" class="nav-link">Ladder</a>
                 <a href="/ligas" class="nav-link">Ligas</a>
                 <a href="/directos" class="nav-link">Directos</a>
@@ -336,8 +337,8 @@ if ($resultCheck > 0) {
                             echo '</div>';
                             echo '<ul>';
                             echo '<div>';
-                            echo '<span>'.$row["nombreAnterior"].'</span>';
-                            echo '<span>'.$row["fecha"].'</span>';
+                            echo '<span>' . $row["nombreAnterior"] . '</span>';
+                            echo '<span>' . $row["fecha"] . '</span>';
                             echo '</div>';
                             echo '</ul>';
                             echo '</div>';

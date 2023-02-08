@@ -12,6 +12,7 @@ include_once("db.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
+    <link rel="icon" href="src/logopequeño.png">
     <link rel="stylesheet" href="estilo.css">
     <script src="https://kit.fontawesome.com/38818051b5.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
@@ -30,7 +31,7 @@ include_once("db.php");
 <body>
     <header>
         <a href="https://www.elamateur.es" class="logo">
-            <img src="https://via.placeholder.com/150" alt="Logo">
+            <img src="src/logo.png" alt="Logo">
         </a>
         <div class="linksheader">
             <nav>
@@ -43,8 +44,8 @@ include_once("db.php");
         </div>
     </header>
     <header class="headeroculto">
-    <a href="https://www.elamateur.es" class="logo">
-            <img src="https://via.placeholder.com/150" alt="Logo">
+        <a href="https://www.elamateur.es" class="logo">
+            <img src="src/logo.png" alt="Logo">
         </a>
         <div class="linksheader">
             <nav>
