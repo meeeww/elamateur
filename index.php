@@ -63,7 +63,7 @@ include_once("db.php");
             <a class="card" href="/ladder">
                 <div>
                     <i class="fa-solid fa-bolt"></i>
-                    <h2>Ladder</h2>
+                    <h2>Top Amateur</h2>
                 </div>
             </a>
             <a class="card" href="/ligas">
