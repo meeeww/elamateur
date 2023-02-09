@@ -99,7 +99,8 @@ include_once("db.php");
             </div>
             <div class="tablita" id="tablitajugadores">
                 <?php
-                $result = mysqli_query($conn, "SELECT * FROM historialRangos
+                $fechaayer = date('Y-m-d',strtotime("-1 days"));
+                $result = mysqli_query($conn, "SELECT * FROM historialRangos WHERE fecha = '".$fechaayer."'
                 ORDER BY fecha DESC, FIELD(division,'CHALLENGER','GRANDMASTER','MASTER','DIAMOND', 'PLATINUM', 'GOLD', 'SILVER', 'BRONZE', 'IRON') ASC, FIELD(rango,'I', 'II', 'III', 'IV') ASC, lps DESC
                 ;");
 
