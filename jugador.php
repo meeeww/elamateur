@@ -115,11 +115,7 @@ if ($resultCheck > 0) {
                     fill: 'transparent'
                 },
                 colors: ['#E91E63'],
-                hAxis: {
-                    textStyle: {
-                        color: '#E91E63'
-                    }
-                },
+                hAxis: { textPosition: 'none' },
                 chartArea: {
                     left: 65,
                     top: 70,

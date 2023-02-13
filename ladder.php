@@ -93,12 +93,14 @@ include_once("db.php");
             <div class="tablaLadder">
 
                 <?php
-                $result = mysqli_query($conn, "SELECT * FROM `historialRangos` ORDER BY FIELD(division,'CHALLENGER','GRANDMASTER','MASTER','DIAMOND', 'PLATINUM', 'GOLD', 'SILVER', 'BRONZE', 'IRON') ASC, FIELD(rango,'I', 'II', 'III', 'IV') ASC, lps DESC;");
+                $hoy = getdate();
+                $fechadehoy = $hoy['year'] . '-' . sprintf("%02d", $hoy['mon']) . '-' . sprintf("%02d", $hoy['mday']);
+                
+                $result = mysqli_query($conn, "SELECT * FROM `historialRangos` WHERE fecha = '".$fechadehoy."' ORDER BY FIELD(division,'CHALLENGER','GRANDMASTER','MASTER','DIAMOND', 'PLATINUM', 'GOLD', 'SILVER', 'BRONZE', 'IRON') ASC, FIELD(rango,'I', 'II', 'III', 'IV') ASC, lps DESC;");
 
                 $resultCheck = mysqli_num_rows($result);
 
-                $hoy = getdate();
-                $fechadehoy = $hoy['year'] . '-' . sprintf("%02d", $hoy['mon']) . '-' . sprintf("%02d", $hoy['mday']);
+                
                 $contador = 1;
                 $jugadoresCheck = array();
                 if ($resultCheck > 0) {
@@ -176,7 +178,13 @@ include_once("db.php");
                                             }
                                             echo '<br>';
                                             echo '<span>&nbsp&nbsp' . $row['lps'] . ' LPS</span>';
-                                            echo '<a href="/equipo?id=' . $columna['idEquipo'] . '"><img src="https://res.cloudinary.com/chypriote/image/upload/t_mini/f_auto/v1634227483/teams/' . strtolower($columna['nombreEquipo']) . '" style="height: 2rem"></a>';
+                                            $conseguiLogoEquipo = mysqli_query($conn, "SELECT * FROM `elamateur`.`equipos` WHERE `idEquipo` = " . $columna['idEquipo']);
+                                            $logosCheck = mysqli_num_rows($conseguiLogoEquipo);
+                                            if ($logosCheck > 0) {
+                                                while ($columnaLogos = mysqli_fetch_assoc($conseguiLogoEquipo)) {
+                                                    echo '<a href="/equipo?id=' . $columna['idEquipo'] . '"><img src="' . $columnaLogos["logoGrande"] . '" style="height: 2rem; width: 72px"></a>';
+                                                }
+                                            }
                                             echo '</div>';
                                             echo '</div>';
                                             echo '<div class="bordes">';
