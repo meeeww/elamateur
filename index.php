@@ -101,7 +101,7 @@ include_once("db.php");
                 <?php
                 $result = mysqli_query($conn, "SELECT * FROM historialRangos
                 ORDER BY fecha DESC, FIELD(division,'CHALLENGER','GRANDMASTER','MASTER','DIAMOND', 'PLATINUM', 'GOLD', 'SILVER', 'BRONZE', 'IRON') ASC, FIELD(rango,'I', 'II', 'III', 'IV') ASC, lps DESC
-                ;");
+                LIMIT 10;");
 
                 $resultCheck = mysqli_num_rows($result);
 
